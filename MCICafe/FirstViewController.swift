@@ -11,8 +11,8 @@ import Firebase
 import FirebaseDatabase
 
 
-var ref: FIRDatabaseReference!
-var specialsMenu: NSDictionary?
+
+//var specialsMenu = getSpecialMenu()
 
 
 class FirstViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
@@ -24,6 +24,7 @@ class FirstViewController: UIViewController,UITableViewDelegate, UITableViewData
             
         }
     }
+    
 
     
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class FirstViewController: UIViewController,UITableViewDelegate, UITableViewData
 
         tableView.delegate = self
         tableView.dataSource = self
-        
+       
         // Set delegate and datasource to self (you can do that in interface builder as well
         
         
@@ -42,30 +43,15 @@ class FirstViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         ref = FIRDatabase.database().reference()
        
-        ref.child("menu").observeSingleEvent(of: .value, with: { (snapshot) in
-           // print(snapshot.value)
-            
-            let y = snapshot.value as! NSDictionary
-            let x = y["specials"] as! NSArray
-            print(x)
-            
-            for index in x  {
-                let dic = index as! NSDictionary
-                
-               let title = dic.value(forKey: "title") as! String
-               let description = dic.value(forKey: "description") as! String
-               let cost = dic.value(forKey: "cost") as! String
-                
-                self.specialsArr.append(MenuSpecials.init(description: description, title: title, cost: cost))
-                print(self.specialsArr)
-            }
-            
-            
-            // ...
-        }) { (error) in
+        ref.child("menu").child("specials").observeSingleEvent(of: .value, with: { (snapshot) in
+           
+           self.specialsArr = getSpecialMenu(snapshot: snapshot)
+           
+        })
+        { (error) in
             print(error.localizedDescription)
         }
-               
+        
     }
 
     override func didReceiveMemoryWarning() {

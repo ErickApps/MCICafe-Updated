@@ -14,18 +14,26 @@ import FirebaseDatabase
 
 
 
+var x: NSArray = []
+var specialsArr: [MenuSpecials] = []
+
+
+
 
 
 struct MenuSpecials {
-    let description: String
-    let title: String
-    let cost: String
+    var description: String
+    var title: String
+    var cost: String
+    
     
     
     init(description: String, title: String, cost: String) {
         self.description = description
         self.title = title
         self.cost = cost
+        
+
         
     }
     
@@ -36,7 +44,40 @@ struct MenuSpecials {
 //        self.specialsRef = nil
 //    }
     
+    
+    
+    
+    
+    
+    
 }
+func getSpecialMenu(snapshot: FIRDataSnapshot) -> [MenuSpecials] {
+    
+    
+    x = snapshot.value as! NSArray
+    print(x)
+    
+    for index in x  {
+        let dic = index as! NSDictionary
+        
+        let title = dic.value(forKey: "title") as! String
+        let description = dic.value(forKey: "description") as! String
+        let cost = dic.value(forKey: "cost") as! String
+        
+        //            self.specialsArr.append(MenuSpecials.init(description: description, title: title, cost: cost))
+        //            print(self.specialsArr)
+        specialsArr.append(MenuSpecials.init(description: description, title: title, cost: cost))
+        print(specialsArr)
+        
+    }
+    
+    
+    
+    return specialsArr
+    
+    
+}
+
 
 
 
