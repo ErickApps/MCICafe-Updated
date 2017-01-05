@@ -18,7 +18,11 @@ var x: NSArray = []
 var specialsArr: [MenuSpecials] = []
 
 
-
+enum strValues: String{
+    case title
+    case description
+    case cost
+}
 
 
 struct MenuSpecials {
@@ -60,9 +64,9 @@ func getSpecialMenu(snapshot: FIRDataSnapshot) -> [MenuSpecials] {
     for index in x  {
         let dic = index as! NSDictionary
         
-        let title = dic.value(forKey: "title") as! String
-        let description = dic.value(forKey: "description") as! String
-        let cost = dic.value(forKey: "cost") as! String
+        let title = dic.value(forKey: strValues.title.rawValue) as! String
+        let description = dic.value(forKey: strValues.description.rawValue) as! String
+        let cost = dic.value(forKey: strValues.cost.rawValue) as! String
         
         //            self.specialsArr.append(MenuSpecials.init(description: description, title: title, cost: cost))
         //            print(self.specialsArr)
