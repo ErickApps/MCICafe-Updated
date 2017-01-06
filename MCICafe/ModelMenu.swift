@@ -13,11 +13,6 @@ import FirebaseDatabase
 
 
 
-
-var x: NSArray = []
-var specialsArr: [MenuSpecials] = []
-
-
 enum strValues: String{
     case title
     case description
@@ -57,6 +52,8 @@ struct MenuSpecials {
 }
 func getSpecialMenu(snapshot: FIRDataSnapshot) -> [MenuSpecials] {
     
+    var x: NSArray = []
+    var specialsArr: [MenuSpecials] = []
     
     x = snapshot.value as! NSArray
     print(x)

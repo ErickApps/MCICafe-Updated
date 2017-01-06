@@ -15,7 +15,7 @@ import FirebaseDatabase
 //var specialsMenu = getSpecialMenu()
 
 
-class FirstViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
+class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
   @IBOutlet var tableView: UITableView!  
    
     var specialsArr: [MenuSpecials] = [] {

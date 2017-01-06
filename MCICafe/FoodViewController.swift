@@ -9,11 +9,16 @@
 import UIKit
 import Firebase
 
-class SecondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     var ref: FIRDatabaseReference!
-    var foodArr: [MenuSpecials] = []
+    var foodArr: [MenuSpecials] = []{
+        didSet{
+            tableView.reloadData()
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,5 +67,8 @@ class SecondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return cell
     }
 
+    @IBAction func tabBar(_ sender: UISegmentedControl) {
+    /// to be continued
+    }
 }
 
