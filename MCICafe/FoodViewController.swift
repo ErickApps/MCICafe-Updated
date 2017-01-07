@@ -12,7 +12,8 @@ import Firebase
 class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    var ref: FIRDatabaseReference!
+    var snapData: [String:[MenuSpecials]] = [:]
+    
     var foodArr: [MenuSpecials] = []{
         didSet{
             tableView.reloadData()
@@ -25,19 +26,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
-        
-    
-        ref = FIRDatabase.database().reference()
-        
-        ref.child("menu").child("food").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            self.foodArr = getSpecialMenu(snapshot: snapshot)
-            
-        })
-        { (error) in
-            print(error.localizedDescription)
-        }
-
+        getMenu()
         
         
     }
@@ -68,7 +57,39 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     @IBAction func tabBar(_ sender: UISegmentedControl) {
-    /// to be continued
+        
+        switch sender.selectedSegmentIndex {
+        case 1: self.foodArr = self.snapData["soupAndSalad"]!
+        case 2: self.foodArr = self.snapData["sandwich"]!
+    
+        default:
+            self.foodArr = self.snapData["breakfast"]!
+        }
+ 
+        
     }
+    
+    func getMenu(){
+        
+        var ref: FIRDatabaseReference!
+        
+        ref = FIRDatabase.database().reference()
+        
+        ref.child("menu").child("food").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+            
+            self.snapData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "breakfast"), forKey: "breakfast")
+            self.snapData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "soupAndSalad"), forKey: "soupAndSalad")
+            self.snapData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "sandwich"), forKey: "sandwich")
+            self.foodArr = self.snapData["breakfast"]!
+            
+            })
+        { (error) in
+            print(error.localizedDescription)
+        }
+
+    }
+    
 }
 

@@ -12,18 +12,21 @@ import FirebaseDatabase
 
 
 
-//var specialsMenu = getSpecialMenu()
 
 
 class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
   @IBOutlet var tableView: UITableView!  
    
+    
+        
+    
     var specialsArr: [MenuSpecials] = [] {
         didSet {
             tableView.reloadData()
             
         }
     }
+    
     
 
     
@@ -34,24 +37,10 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        getMenu()
        
-        // Set delegate and datasource to self (you can do that in interface builder as well
-        
-        
-        
-        var ref: FIRDatabaseReference!
-        
-        ref = FIRDatabase.database().reference()
-       
-        ref.child("menu").child("specials").observeSingleEvent(of: .value, with: { (snapshot) in
-           
-           self.specialsArr = getSpecialMenu(snapshot: snapshot)
-           
-        })
-        { (error) in
-            print(error.localizedDescription)
-        }
-        
+                     
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +66,22 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         cell.costCellLabel.text = dailySpecial.cost
         
         return cell
+    }
+    func getMenu(){
+        
+        var ref: FIRDatabaseReference!
+        
+            ref = FIRDatabase.database().reference()
+        
+            ref.child("menu").observeSingleEvent(of: .value, with: { (snapshot) in
+
+            self.specialsArr.append(contentsOf: unWrapMenu(snapshot: snapshot, nodeKey: "specials"))
+                
+                })
+            { (error) in
+                print(error.localizedDescription)
+            }
+
     }
     
     
