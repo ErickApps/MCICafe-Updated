@@ -230,12 +230,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031" y="382"/>
+            <point key="canvasLocation" x="1537" y="223"/>
         </scene>
         <!--Drinks-->
         <scene sceneID="RLu-wi-Aag">
             <objects>
-                <viewController id="omy-jN-zCc" sceneMemberID="viewController">
+                <viewController id="omy-jN-zCc" customClass="DrinksViewController" customModule="MCICafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EMI-DX-tav"/>
                         <viewControllerLayoutGuide type="bottom" id="c5a-tl-2Kc"/>
@@ -247,22 +247,22 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wg9-C6-ubH">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Coffee" textLabel="kqa-aP-NQy" detailTextLabel="DoY-gY-WNn" style="IBUITableViewCellStyleValue1" id="ph1-yz-c6t">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DrinksCell" textLabel="kqa-aP-NQy" detailTextLabel="DoY-gY-WNn" style="IBUITableViewCellStyleValue1" id="ph1-yz-c6t">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ph1-yz-c6t" id="Mmg-JZ-vO8">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kqa-aP-NQy">
-                                                    <frame key="frameInset" minX="15" minY="12" width="33.5" height="20.5"/>
+                                                    <frame key="frameInset" minX="15" minY="11" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DoY-gY-WNn">
-                                                    <frame key="frameInset" minX="316" minY="12" width="44" height="20.5"/>
+                                                    <frame key="frameInset" minX="316" minY="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -272,11 +272,15 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="omy-jN-zCc" id="Hz1-sw-GrG"/>
+                                    <outlet property="delegate" destination="omy-jN-zCc" id="UuP-cY-tyN"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MCI Cafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3X-ur-ucu">
                                 <color key="backgroundColor" red="0.29873516636393638" green="0.83281915173340482" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="6b7-Ze-WZ8"/>
+                                    <constraint firstAttribute="height" constant="61" id="79J-7s-BNr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -287,27 +291,128 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="drinksTab:" destination="omy-jN-zCc" eventType="valueChanged" id="rpV-5s-rpR"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wg9-C6-ubH" firstAttribute="top" secondItem="qi7-0b-dce" secondAttribute="bottom" constant="8" symbolic="YES" id="1wS-ou-Ua7"/>
-                            <constraint firstItem="v3X-ur-ucu" firstAttribute="leading" secondItem="wg9-C6-ubH" secondAttribute="leading" id="4aA-HT-ARd"/>
-                            <constraint firstItem="qi7-0b-dce" firstAttribute="leading" secondItem="Kx2-EX-w6m" secondAttribute="leadingMargin" id="BsQ-0W-l41"/>
-                            <constraint firstAttribute="trailing" secondItem="v3X-ur-ucu" secondAttribute="trailing" id="Epv-st-cMu"/>
-                            <constraint firstItem="qi7-0b-dce" firstAttribute="top" secondItem="v3X-ur-ucu" secondAttribute="bottom" constant="8" symbolic="YES" id="Sv0-hL-bwF"/>
-                            <constraint firstItem="v3X-ur-ucu" firstAttribute="leading" secondItem="Kx2-EX-w6m" secondAttribute="leading" id="TcW-wV-7lS"/>
-                            <constraint firstItem="c5a-tl-2Kc" firstAttribute="top" secondItem="wg9-C6-ubH" secondAttribute="bottom" constant="8" symbolic="YES" id="huu-Fm-6e6"/>
-                            <constraint firstItem="v3X-ur-ucu" firstAttribute="top" secondItem="EMI-DX-tav" secondAttribute="bottom" constant="8" symbolic="YES" id="iha-7F-9rI"/>
-                            <constraint firstItem="v3X-ur-ucu" firstAttribute="centerX" secondItem="qi7-0b-dce" secondAttribute="centerX" id="vRi-X3-RWV"/>
-                            <constraint firstItem="v3X-ur-ucu" firstAttribute="trailing" secondItem="wg9-C6-ubH" secondAttribute="trailing" id="yfh-Kc-2dL"/>
+                            <constraint firstAttribute="trailing" secondItem="v3X-ur-ucu" secondAttribute="trailing" id="0pB-3e-hyp"/>
+                            <constraint firstItem="v3X-ur-ucu" firstAttribute="leading" secondItem="Kx2-EX-w6m" secondAttribute="leading" id="3Lr-CY-feg"/>
+                            <constraint firstItem="wg9-C6-ubH" firstAttribute="top" secondItem="qi7-0b-dce" secondAttribute="bottom" constant="8" symbolic="YES" id="6b1-2X-QhA"/>
+                            <constraint firstItem="qi7-0b-dce" firstAttribute="leading" secondItem="Kx2-EX-w6m" secondAttribute="leadingMargin" id="QDF-iV-epg"/>
+                            <constraint firstItem="v3X-ur-ucu" firstAttribute="trailing" secondItem="wg9-C6-ubH" secondAttribute="trailing" id="QZl-nz-kWs"/>
+                            <constraint firstItem="c5a-tl-2Kc" firstAttribute="top" secondItem="wg9-C6-ubH" secondAttribute="bottom" constant="8" symbolic="YES" id="XyP-fd-AcC"/>
+                            <constraint firstItem="v3X-ur-ucu" firstAttribute="top" secondItem="EMI-DX-tav" secondAttribute="bottom" constant="8" symbolic="YES" id="YZB-kn-roV"/>
+                            <constraint firstItem="qi7-0b-dce" firstAttribute="top" secondItem="v3X-ur-ucu" secondAttribute="bottom" constant="8" symbolic="YES" id="mJA-RN-1qI"/>
+                            <constraint firstItem="v3X-ur-ucu" firstAttribute="leading" secondItem="wg9-C6-ubH" secondAttribute="leading" id="o3J-gL-Pz9"/>
+                            <constraint firstItem="v3X-ur-ucu" firstAttribute="centerX" secondItem="qi7-0b-dce" secondAttribute="centerX" id="ryx-P8-EsQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Drinks" image="Drinks_Inactive" id="qyg-JL-Ts3"/>
+                    <connections>
+                        <outlet property="tableView" destination="wg9-C6-ubH" id="fs3-de-hLj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqx-jx-ndJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="636" y="920.68965517241384"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="wrd-On-Xbn">
+            <objects>
+                <viewController id="w7d-Ul-vyW" customClass="InfoViewController" customModule="MCICafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cHz-kJ-SIY"/>
+                        <viewControllerLayoutGuide type="bottom" id="MCB-oO-9Ia"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AO0-DA-bdz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zKY-fg-IJd">
+                                <connections>
+                                    <outlet property="delegate" destination="w7d-Ul-vyW" id="cpb-I8-VWd"/>
+                                </connections>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miami Dade  Culinary Institute" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtS-vd-dXj">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="kNC-T7-FQ6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Café" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTu-cI-vr3">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="BAT-O7-ayU"/>
+                                    <constraint firstAttribute="width" constant="141" id="cbN-bj-uUD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LTH-ji-c3g">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="(305) 2373276"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY1-ww-H34">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="tzB-Vu-T15"/>
+                                </constraints>
+                                <state key="normal" image="Facebook"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5Q-EI-iP6">
+                                <state key="normal" image="Instagram"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-wD-eah">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="ZaP-4S-j90"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="YouTube"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csQ-J1-HRy">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="2S6-wp-Mgy"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Twitter"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zKY-fg-IJd" secondAttribute="trailing" id="3OT-U5-s1a"/>
+                            <constraint firstItem="XY1-ww-H34" firstAttribute="top" secondItem="csQ-J1-HRy" secondAttribute="top" id="5iI-cO-19U"/>
+                            <constraint firstItem="KtS-vd-dXj" firstAttribute="top" secondItem="zKY-fg-IJd" secondAttribute="bottom" constant="34" id="7pG-U7-e7a"/>
+                            <constraint firstItem="MCB-oO-9Ia" firstAttribute="top" secondItem="XY1-ww-H34" secondAttribute="bottom" constant="64" id="C9o-jA-kuJ"/>
+                            <constraint firstItem="csQ-J1-HRy" firstAttribute="leading" secondItem="XY1-ww-H34" secondAttribute="trailing" constant="8" symbolic="YES" id="GQu-YF-Uzr"/>
+                            <constraint firstItem="csQ-J1-HRy" firstAttribute="top" secondItem="LTH-ji-c3g" secondAttribute="bottom" constant="62" id="I3v-fc-7L1"/>
+                            <constraint firstItem="XY1-ww-H34" firstAttribute="bottom" secondItem="csQ-J1-HRy" secondAttribute="bottom" id="Q12-Dk-4rx"/>
+                            <constraint firstItem="KtS-vd-dXj" firstAttribute="centerY" secondItem="AO0-DA-bdz" secondAttribute="centerY" id="RKP-Ao-SRo"/>
+                            <constraint firstItem="XY1-ww-H34" firstAttribute="leading" secondItem="AO0-DA-bdz" secondAttribute="leadingMargin" id="RWT-2T-BJq"/>
+                            <constraint firstItem="i5Q-EI-iP6" firstAttribute="leading" secondItem="Q4M-wD-eah" secondAttribute="trailing" constant="8" symbolic="YES" id="UE2-4v-YuW"/>
+                            <constraint firstItem="Q4M-wD-eah" firstAttribute="top" secondItem="i5Q-EI-iP6" secondAttribute="top" id="VQ0-KC-Vtd"/>
+                            <constraint firstItem="TTu-cI-vr3" firstAttribute="top" secondItem="KtS-vd-dXj" secondAttribute="bottom" constant="8" symbolic="YES" id="XHN-MG-7vV"/>
+                            <constraint firstItem="KtS-vd-dXj" firstAttribute="leading" secondItem="AO0-DA-bdz" secondAttribute="leadingMargin" constant="52" id="h57-m2-Akd"/>
+                            <constraint firstItem="i5Q-EI-iP6" firstAttribute="trailing" secondItem="AO0-DA-bdz" secondAttribute="trailingMargin" id="hGP-oU-AAs"/>
+                            <constraint firstItem="zKY-fg-IJd" firstAttribute="leading" secondItem="AO0-DA-bdz" secondAttribute="leading" id="kld-lB-vTx"/>
+                            <constraint firstItem="KtS-vd-dXj" firstAttribute="centerX" secondItem="TTu-cI-vr3" secondAttribute="centerX" id="ltR-b6-5Mo"/>
+                            <constraint firstItem="zKY-fg-IJd" firstAttribute="centerX" secondItem="KtS-vd-dXj" secondAttribute="centerX" id="nqD-kY-Tlb"/>
+                            <constraint firstItem="zKY-fg-IJd" firstAttribute="top" secondItem="cHz-kJ-SIY" secondAttribute="bottom" constant="8" symbolic="YES" id="qQk-br-UJT"/>
+                            <constraint firstItem="LTH-ji-c3g" firstAttribute="leading" secondItem="AO0-DA-bdz" secondAttribute="leadingMargin" constant="93" id="qfz-F6-WFj"/>
+                            <constraint firstItem="LTH-ji-c3g" firstAttribute="top" secondItem="TTu-cI-vr3" secondAttribute="bottom" constant="8" symbolic="YES" id="rE8-4m-KLb"/>
+                            <constraint firstItem="csQ-J1-HRy" firstAttribute="baseline" secondItem="Q4M-wD-eah" secondAttribute="baseline" id="rWC-Fk-C2m"/>
+                            <constraint firstItem="TTu-cI-vr3" firstAttribute="centerX" secondItem="LTH-ji-c3g" secondAttribute="centerX" id="xxM-F9-ySb"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Info" image="Info_Inactive" id="tsH-Oo-MOg"/>
+                    <connections>
+                        <outlet property="mapView" destination="zKY-fg-IJd" id="1jd-BI-Duq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wRK-Qt-eSn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816.8" y="886.50674662668678"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -323,6 +428,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="omy-jN-zCc" kind="relationship" relationship="viewControllers" id="hsR-3d-sBO"/>
+                        <segue destination="w7d-Ul-vyW" kind="relationship" relationship="viewControllers" id="cdD-Ug-fK7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -332,7 +438,12 @@
     </scenes>
     <resources>
         <image name="Drinks_Inactive" width="24" height="24"/>
+        <image name="Facebook" width="50" height="50"/>
         <image name="Food_Inactive" width="24" height="24"/>
+        <image name="Info_Inactive" width="24" height="24"/>
+        <image name="Instagram" width="50" height="50"/>
         <image name="Specials_Inactive" width="24" height="24"/>
+        <image name="Twitter" width="50" height="50"/>
+        <image name="YouTube" width="50" height="50"/>
     </resources>
 </document>

@@ -16,6 +16,10 @@
 		A793523A1E0E362B00C36D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A79352391E0E362B00C36D82 /* Assets.xcassets */; };
 		A793523D1E0E362B00C36D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A793523B1E0E362B00C36D82 /* LaunchScreen.storyboard */; };
 		A79352451E0E37BE00C36D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */; };
+		A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72641E21827A008605CF /* DrinksViewController.swift */; };
+		A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72661E25BC07008605CF /* InfoViewController.swift */; };
+		A79B72691E25CD25008605CF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72681E25CD25008605CF /* Artwork.swift */; };
+		A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B726A1E25D1CE008605CF /* OpenMap.swift */; };
 		A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */; };
 		B6307B90C8D0A7F72D4C76CB /* Pods_MCICafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128937136E066EF1F1571E32 /* Pods_MCICafe.framework */; };
 /* End PBXBuildFile section */
@@ -34,6 +38,10 @@
 		A793523C1E0E362B00C36D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A793523E1E0E362B00C36D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A79B72641E21827A008605CF /* DrinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
+		A79B72661E25BC07008605CF /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		A79B72681E25CD25008605CF /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		A79B726A1E25D1CE008605CF /* OpenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMap.swift; sourceTree = "<group>"; };
 		A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		CC57078106DA0182E40247F4 /* Pods-MCICafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +103,10 @@
 				A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */,
 				A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */,
 				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
+				A79B72641E21827A008605CF /* DrinksViewController.swift */,
+				A79B72661E25BC07008605CF /* InfoViewController.swift */,
+				A79B726A1E25D1CE008605CF /* OpenMap.swift */,
+				A79B72681E25CD25008605CF /* Artwork.swift */,
 				A79352361E0E362B00C36D82 /* Main.storyboard */,
 				A79352391E0E362B00C36D82 /* Assets.xcassets */,
 				A793523B1E0E362B00C36D82 /* LaunchScreen.storyboard */,
@@ -228,11 +240,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */,
+				A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */,
 				A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */,
 				A79352351E0E362B00C36D82 /* FoodViewController.swift in Sources */,
 				A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */,
 				A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */,
 				A79352331E0E362B00C36D82 /* FoodSpecialsViewController.swift in Sources */,
+				A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */,
+				A79B72691E25CD25008605CF /* Artwork.swift in Sources */,
 				A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

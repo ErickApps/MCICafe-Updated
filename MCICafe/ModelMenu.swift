@@ -27,7 +27,7 @@ struct MenuSpecials {
     
     
     
-    init(description: String, title: String, cost: String) {
+    init(description: String = "", title: String, cost: String) {
         self.description = description
         self.title = title
         self.cost = cost
@@ -75,6 +75,7 @@ func unWrapMenu(snapshot: FIRDataSnapshot, nodeKey: String) -> [MenuSpecials] {
     
             let title = dic.value(forKey: strValues.title.rawValue) as! String
             let description = dic.value(forKey: strValues.description.rawValue) as! String
+            
             let cost = dic.value(forKey: strValues.cost.rawValue) as! String
     
             
@@ -85,8 +86,29 @@ func unWrapMenu(snapshot: FIRDataSnapshot, nodeKey: String) -> [MenuSpecials] {
     return menuItems
 
 }
+func unWrapDrink(snapshot: FIRDataSnapshot, nodeKey: String) -> [MenuSpecials] {
+    
+    var itemsArr: NSArray = []
+    var menuItems: [MenuSpecials] = []
+    let menuDic = snapshot.value as! NSDictionary
+    
+    itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
+    
+    for item in itemsArr  {
+        let dic = item as! NSDictionary
+        
+        let title = dic.value(forKey: strValues.title.rawValue) as! String
+        let cost = dic.value(forKey: strValues.cost.rawValue) as! String
+        
+        
+        menuItems.append(MenuSpecials.init(title: title, cost: cost))
+        
+        
+    }
+    return menuItems
 
 
+}
 
 
 
