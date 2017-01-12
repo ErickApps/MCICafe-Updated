@@ -18,7 +18,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
   @IBOutlet var tableView: UITableView!  
    
     
-        
+      let nodeKey = "specials"
     
     var specialsArr: [MenuSpecials] = [] {
         didSet {
@@ -67,6 +67,26 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         
         return cell
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditMenuSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let menuItem = specialsArr[indexPath.row]
+                let controller = segue.destination as! EditViewController
+                controller.item = menuItem
+                controller.indexKey = String(indexPath.row)
+                controller.nodeKey = self.nodeKey
+                
+                
+//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+//                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
+    
+
+    
+    
+    
     func getMenu(){
         
         var ref: FIRDatabaseReference!
@@ -75,7 +95,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         
             ref.child("menu").observeSingleEvent(of: .value, with: { (snapshot) in
 
-            self.specialsArr.append(contentsOf: unWrapMenu(snapshot: snapshot, nodeKey: "specials"))
+            self.specialsArr.append(contentsOf: unWrapMenu(snapshot: snapshot, nodeKey: self.nodeKey))
                 
                 })
             { (error) in

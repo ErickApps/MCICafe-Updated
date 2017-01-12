@@ -109,6 +109,14 @@ func unWrapDrink(snapshot: FIRDataSnapshot, nodeKey: String) -> [MenuSpecials] {
 
 
 }
+func isManager() -> Bool {
+    var isloggedIn = false
+    
+    FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
+        isloggedIn = true
+    }
+    return isloggedIn
+}
 
 
 

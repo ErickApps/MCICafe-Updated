@@ -41,12 +41,16 @@ class InfoViewController: UIViewController {
     @IBAction func goToMdcButton(_ sender: AnyObject) {
         let url = URL(string: "http://www.miamidadeculinary.com")
         goToURL(url: url!)
+        
+        
     }
     @IBAction func phoneButton(_ sender: UIButton) {
+        let phoneNumber = "3052373276"
+        let cleanNumber = phoneNumber.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
+        guard let number = URL(string: "telprompt://" + cleanNumber) else { return }
         
-         let number = URL(string: "telprompt://3052373276" )
         
-        goToURL(url: number!)
+        goToURL(url: number)
     }
     @IBAction func facebookWebButton(_ sender: UIButton) {
         let url = URL(string: "https://www.facebook.com/MiamiCulinaryInstitute")
