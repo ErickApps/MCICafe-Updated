@@ -390,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC57078106DA0182E40247F4 /* Pods-MCICafe.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MCICafe/MCICafe.entitlements;
 				DEVELOPMENT_TEAM = 5365TKQKLN;
@@ -405,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8C7D760F5CF16DF24C7759D2 /* Pods-MCICafe.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MCICafe/MCICafe.entitlements;
 				DEVELOPMENT_TEAM = 5365TKQKLN;
