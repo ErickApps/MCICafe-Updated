@@ -20,6 +20,9 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
     }
+    let nodeKey = "food"
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,23 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditMenuSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let menuItem = foodArr[indexPath.row]
+                let controller = segue.destination as! EditViewController
+                controller.item = menuItem
+                controller.indexKey = String(indexPath.row)
+                controller.nodeKey = self.nodeKey
+                
+                
+                //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+                //                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

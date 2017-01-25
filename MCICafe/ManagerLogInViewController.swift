@@ -33,9 +33,10 @@ class ManagerLogInViewController: UIViewController {
         
                 
         FIRAuth.auth()?.signIn(withEmail: email!, password: password!) { (user, error) in
-           //print(user?.isEmailVerified ?? "default")
             
         }
+
+        self.dismiss(animated: true, completion: nil)
         
     }
     

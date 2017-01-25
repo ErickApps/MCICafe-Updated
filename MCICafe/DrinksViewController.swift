@@ -21,6 +21,7 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         
     }
+    let nodeKey = "drinks"
 
     
     
@@ -39,7 +40,23 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditMenuSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let menuItem = DrinksArr[indexPath.row]
+                let controller = segue.destination as! EditViewController
+                controller.item = menuItem
+                controller.indexKey = String(indexPath.row)
+                controller.nodeKey = self.nodeKey
+                
+                
+                //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+                //                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
     
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -60,7 +60,7 @@ class EditViewController: UIViewController {
         
         
         titleLabel.text = item?.title
-        descriptionLabel.text = item?.description
+        descriptionLabel.text = item?.description ?? ""
         costLabel.text = item?.cost
         
         

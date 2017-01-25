@@ -27,6 +27,7 @@ struct MenuSpecials {
     
     
     
+    
     init(description: String = "", title: String, cost: String) {
         self.description = description
         self.title = title

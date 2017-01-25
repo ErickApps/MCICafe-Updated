@@ -26,7 +26,10 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
             
         }
     }
+        
     
+    
+
     
 
     
@@ -34,13 +37,23 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         getMenu()
        
                      
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        var editEnable: Bool = false
+        if FIRAuth.auth()?.currentUser != nil {
+            editEnable = true
+            tableView.allowsSelection = editEnable
+        }
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +80,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         
         return cell
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditMenuSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -77,8 +91,6 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
                 controller.nodeKey = self.nodeKey
                 
                 
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-//                controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
