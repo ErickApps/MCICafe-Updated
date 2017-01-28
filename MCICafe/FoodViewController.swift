@@ -12,9 +12,9 @@ import Firebase
 class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    var snapData: [String:[MenuSpecials]] = [:]
+    var snapData: [String:[Menu]] = [:]
     
-    var foodArr: [MenuSpecials] = []{
+    var foodArr: [Menu] = []{
         didSet{
             tableView.reloadData()
         }

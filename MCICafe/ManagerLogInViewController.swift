@@ -27,14 +27,13 @@ class ManagerLogInViewController: UIViewController {
     
     @IBAction func logInButton(_ sender: UIButton) {
         
-        let email = emailTextField.text
-        let password = passwordTextField.text
-        
-        
+        if let email = emailTextField.text,let password = passwordTextField.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
                 
-        FIRAuth.auth()?.signIn(withEmail: email!, password: password!) { (user, error) in
-            
+            }
         }
+        
+        
 
         self.dismiss(animated: true, completion: nil)
         

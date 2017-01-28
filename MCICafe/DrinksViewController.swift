@@ -13,9 +13,9 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
-    var drinkData: [String:[MenuSpecials]] = [:]
+    var drinkData: [String:[Menu]] = [:]
     
-    var DrinksArr: [MenuSpecials] = []{
+    var DrinksArr: [Menu] = []{
         didSet{
             tableView.reloadData()
         }
@@ -82,8 +82,8 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         ref.child("menu").child("drinks").observeSingleEvent(of: .value, with: { (snapshot) in
             
  
-            self.drinkData.updateValue(unWrapDrink(snapshot: snapshot, nodeKey: "coffee"), forKey: "coffee")
-            self.drinkData.updateValue(unWrapDrink(snapshot: snapshot, nodeKey: "softDrink"), forKey: "softDrink")
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "coffee"), forKey: "coffee")
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "softDrink"), forKey: "softDrink")
             self.DrinksArr = self.drinkData["coffee"]!
             
             })

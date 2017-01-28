@@ -15,36 +15,24 @@ import FirebaseDatabase
 
 
 class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
+    
   @IBOutlet var tableView: UITableView!  
-   
+   let nodeKey = "specials"
     
-      let nodeKey = "specials"
-    
-    var specialsArr: [MenuSpecials] = [] {
+    var specialsArr: [Menu] = [] {
         didSet {
             tableView.reloadData()
             
         }
     }
-        
-    
-    
-
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        
+          
         tableView.delegate = self
         tableView.dataSource = self
-        
         getMenu()
-       
-                     
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         var editEnable: Bool = false
@@ -91,6 +79,8 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
                 controller.nodeKey = self.nodeKey
                 
                 
+//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+              controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
@@ -108,6 +98,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
             ref.child("menu").observeSingleEvent(of: .value, with: { (snapshot) in
 
             self.specialsArr.append(contentsOf: unWrapMenu(snapshot: snapshot, nodeKey: self.nodeKey))
+
                 
                 })
             { (error) in

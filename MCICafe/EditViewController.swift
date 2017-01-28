@@ -20,12 +20,12 @@ class EditViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     
-    var item: MenuSpecials?
+    var item: Menu?
     var indexKey: String?
     var nodeKey: String?
     let url = "https://fcm.googleapis.com/fcm/send"
    
-    var ref: FIRDatabaseReference!
+    
     
     
     
@@ -33,7 +33,7 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        sendMessage()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -43,13 +43,20 @@ class EditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func saveButton(_ sender: UIButton) {
+        
+        var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         
-        let post = ["title": titleTextField.text!,
-                    "description": descripitionTextField.text!,
-                    "cost": costTextField.text!]
+        if let title = titleTextField.text, let description = descripitionTextField.text, let cost = costTextField.text {
+            let post = ["title": title,
+                        "description": description,
+                        "cost": cost]
+            ref.child("menu").child(nodeKey!).updateChildValues([indexKey!: post])
+        }
+        
+        //Mark todo finish implementing updating database end error handling
 
-        ref.child("menu").child("specials").updateChildValues(["0": post])
+        //ref.child("menu").child(nodeKey).updateChildValues([indexKey: post])
         
 
         
