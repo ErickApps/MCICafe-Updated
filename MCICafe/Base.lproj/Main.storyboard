@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4S5-aT-52I">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -678,33 +678,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-Pn-Bvi">
-                                <rect key="frame" x="16" y="617" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="msgTextField:" destination="4S5-aT-52I" eventType="editingDidEnd" id="TEo-gQ-z3a"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MCI Cafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhc-Lm-CwH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MCI Cafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhc-Lm-CwH">
                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <color key="backgroundColor" red="0.25489917400000001" green="0.72370147709999999" blue="0.8743508458" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="Ty6-Nu-IZC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-2Y-qEF">
+                                <rect key="frame" x="325" y="617" width="34" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="Lko-MU-uhK"/>
+                                </constraints>
+                                <state key="normal" title="send"/>
+                                <connections>
+                                    <action selector="sendButton:" destination="4S5-aT-52I" eventType="touchUpInside" id="Hi9-te-XsI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-Pn-Bvi">
+                                <rect key="frame" x="16" y="617" width="278" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yhc-Lm-CwH" firstAttribute="top" secondItem="rPe-Vs-JIF" secondAttribute="bottom" constant="8" id="4ek-rN-kat"/>
-                            <constraint firstItem="EKo-GJ-3yj" firstAttribute="top" secondItem="6EA-Pn-Bvi" secondAttribute="bottom" constant="20" id="BoD-YK-GM1"/>
-                            <constraint firstItem="yhc-Lm-CwH" firstAttribute="leading" secondItem="WCk-l0-avY" secondAttribute="leading" id="Cgl-Ua-2cs"/>
-                            <constraint firstItem="6EA-Pn-Bvi" firstAttribute="leading" secondItem="WCk-l0-avY" secondAttribute="leadingMargin" id="nWz-Q3-tDo"/>
-                            <constraint firstItem="6EA-Pn-Bvi" firstAttribute="trailing" secondItem="WCk-l0-avY" secondAttribute="trailingMargin" id="rcF-di-q8O"/>
-                            <constraint firstAttribute="trailing" secondItem="yhc-Lm-CwH" secondAttribute="trailing" id="rcy-34-bl2"/>
+                            <constraint firstItem="6EA-Pn-Bvi" firstAttribute="top" secondItem="aWX-2Y-qEF" secondAttribute="top" id="5wl-YZ-qgh"/>
+                            <constraint firstItem="aWX-2Y-qEF" firstAttribute="leading" secondItem="6EA-Pn-Bvi" secondAttribute="trailing" constant="31" id="JxQ-s5-KF8"/>
+                            <constraint firstItem="aWX-2Y-qEF" firstAttribute="trailing" secondItem="WCk-l0-avY" secondAttribute="trailingMargin" id="VOh-Lb-qmx"/>
+                            <constraint firstItem="yhc-Lm-CwH" firstAttribute="leading" secondItem="WCk-l0-avY" secondAttribute="leading" id="Vty-Rm-Sie"/>
+                            <constraint firstItem="yhc-Lm-CwH" firstAttribute="top" secondItem="rPe-Vs-JIF" secondAttribute="bottom" constant="8" symbolic="YES" id="auM-Zd-L5h"/>
+                            <constraint firstItem="6EA-Pn-Bvi" firstAttribute="leading" secondItem="WCk-l0-avY" secondAttribute="leadingMargin" id="flE-iq-4V7"/>
+                            <constraint firstAttribute="trailing" secondItem="yhc-Lm-CwH" secondAttribute="trailing" id="kJn-lx-uUB"/>
+                            <constraint firstAttribute="bottom" secondItem="6EA-Pn-Bvi" secondAttribute="bottom" constant="20" symbolic="YES" id="ldr-gx-2L4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="msgTexField" destination="6EA-Pn-Bvi" id="L1X-2A-NFm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIX-qA-Nbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

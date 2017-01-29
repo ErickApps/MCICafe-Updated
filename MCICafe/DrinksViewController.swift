@@ -21,7 +21,7 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         
     }
-    let nodeKey = "drinks"
+    var nodeKey = nodeLocation.coffee.rawValue
 
     
     
@@ -82,9 +82,9 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         ref.child("menu").child("drinks").observeSingleEvent(of: .value, with: { (snapshot) in
             
  
-            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "coffee"), forKey: "coffee")
-            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "softDrink"), forKey: "softDrink")
-            self.DrinksArr = self.drinkData["coffee"]!
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: nodeLocation.coffee.rawValue), forKey: nodeLocation.coffee.rawValue)
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: nodeLocation.softDrink.rawValue), forKey: nodeLocation.softDrink.rawValue)
+            self.DrinksArr = self.drinkData[nodeLocation.coffee.rawValue]!
             
             })
         { (error) in
@@ -97,9 +97,11 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBAction func drinksTab(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 1 {
-            self.DrinksArr = drinkData["softDrink"]!
+            self.DrinksArr = drinkData[nodeLocation.softDrink.rawValue]!
+            self.nodeKey = nodeLocation.softDrink.rawValue
         }else{
-            self.DrinksArr = drinkData["coffee"]!
+            self.DrinksArr = drinkData[nodeLocation.coffee.rawValue]!
+            self.nodeKey = nodeLocation.coffee.rawValue
         }
         
     }

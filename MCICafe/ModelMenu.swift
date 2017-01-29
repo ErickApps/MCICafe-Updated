@@ -18,6 +18,15 @@ enum strValues: String{
     case description
     case cost
 }
+enum nodeLocation: String {
+    case specials
+    case breakfast
+    case sandwich
+    case soupAndSalad
+    case coffee
+    case softDrink
+}
+
 
 
 struct Menu {
@@ -59,6 +68,36 @@ func unWrapMenu(snapshot: FIRDataSnapshot, nodeKey: String) -> [Menu] {
     return menuItems
 
 }
+
+func getChildLocation(nodeKey: String) -> FIRDatabaseReference {
+    
+    var ref: FIRDatabaseReference!
+    ref = FIRDatabase.database().reference()
+    var childLocation = ref.child("menu")
+    
+    switch nodeKey {
+    case nodeLocation.coffee.rawValue:
+        childLocation = ref.child("menu").child("drinks").child(nodeLocation.coffee.rawValue)
+    case nodeLocation.softDrink.rawValue:
+        childLocation = ref.child("menu").child("drinks").child(nodeLocation.softDrink.rawValue)
+    case nodeLocation.breakfast.rawValue:
+        childLocation = ref.child("menu").child("food").child(nodeLocation.breakfast.rawValue)
+    case nodeLocation.sandwich.rawValue:
+        childLocation = ref.child("menu").child("food").child(nodeLocation.sandwich.rawValue)
+    case nodeLocation.soupAndSalad.rawValue:
+        childLocation = ref.child("menu").child("food").child(nodeLocation.soupAndSalad.rawValue)
+    case nodeLocation.specials.rawValue:
+        childLocation = ref.child("menu").child(nodeLocation.specials.rawValue)
+    default:
+        break
+    }
+
+    return childLocation
+    
+}
+
+
+
 //func unWrapDrink(snapshot: FIRDataSnapshot, nodeKey: String) -> [MenuSpecials] {
 //    
 //    var itemsArr: NSArray = []

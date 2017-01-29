@@ -20,7 +20,8 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
     }
-    let nodeKey = "food"
+    var nodeKey: String = "breakfast"
+    
     
     
     
@@ -79,11 +80,14 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBAction func tabBar(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
-        case 1: self.foodArr = self.snapData["soupAndSalad"]!
-        case 2: self.foodArr = self.snapData["sandwich"]!
+        case 1: self.foodArr = self.snapData[nodeLocation.soupAndSalad.rawValue]!
+            self.nodeKey = nodeLocation.soupAndSalad.rawValue
+        case 2: self.foodArr = self.snapData[nodeLocation.sandwich.rawValue]!
+            self.nodeKey = nodeLocation.sandwich.rawValue
     
         default:
-            self.foodArr = self.snapData["breakfast"]!
+            self.foodArr = self.snapData[nodeLocation.breakfast.rawValue]!
+            self.nodeKey = nodeLocation.breakfast.rawValue
         }
  
         

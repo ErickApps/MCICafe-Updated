@@ -8,9 +8,18 @@
 
 import UIKit
 import Firebase
-import Alamofire
+
+
+
 
 class EditViewController: UIViewController {
+    
+    var item: Menu?
+    var indexKey: String?
+    var nodeKey: String?
+    
+
+
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descripitionTextField: UITextField!
@@ -20,11 +29,6 @@ class EditViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     
-    var item: Menu?
-    var indexKey: String?
-    var nodeKey: String?
-    let url = "https://fcm.googleapis.com/fcm/send"
-   
     
     
     
@@ -44,22 +48,27 @@ class EditViewController: UIViewController {
     }
     @IBAction func saveButton(_ sender: UIButton) {
         
-        var ref: FIRDatabaseReference!
-        ref = FIRDatabase.database().reference()
         
-        if let title = titleTextField.text, let description = descripitionTextField.text, let cost = costTextField.text {
-            let post = ["title": title,
-                        "description": description,
-                        "cost": cost]
-            ref.child("menu").child(nodeKey!).updateChildValues([indexKey!: post])
+        let ref = getChildLocation(nodeKey: nodeKey!)
+        
+                if nodeKey ==  nodeLocation.coffee.rawValue || nodeKey ==  nodeLocation.softDrink.rawValue{
+            if let title = titleTextField.text,
+               let cost = costTextField.text
+            {
+                let post = ["title": title,"cost": cost]
+                ref.updateChildValues([indexKey!: post])
+            }
+        
+        }else {
+                    if let title = titleTextField.text, let description = descripitionTextField.text, let cost = costTextField.text {
+                        let post = ["title": title,
+                                    "description": description,
+                                    "cost": cost]
+                        ref.updateChildValues([indexKey!: post])
+                    }
+
+            
         }
-        
-        //Mark todo finish implementing updating database end error handling
-
-        //ref.child("menu").child(nodeKey).updateChildValues([indexKey: post])
-        
-
-        
     }
 
     func configureView() {
