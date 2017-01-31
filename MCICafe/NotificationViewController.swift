@@ -10,19 +10,39 @@ import UIKit
 import Firebase
 
 
-class NotificationViewController: UIViewController {
+class NotificationViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var msgTexField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        msgTexField.delegate = self
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func keyboardDismiss() {
+        msgTexField.resignFirstResponder()
+    }
+    
+    //ADD Gesture Recignizer to Dismiss keyboard then view tapped
+    @IBAction func viewTapped(_ sender: AnyObject) {
+        keyboardDismiss()
+    }
+    
+    //Dismiss keyboard using Return Key (Done) Button
+    //Do not forgot to add protocol UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        keyboardDismiss()
+        
+        return true
+    }
+    
     
     @IBAction func sendButton(_ sender: UIButton) {
         var request = URLRequest(url: URL(string: "https://fcm.googleapis.com/fcm/send")!)

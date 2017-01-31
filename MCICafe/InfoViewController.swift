@@ -8,10 +8,13 @@
 
 import UIKit
 import MapKit
+import Firebase
 class InfoViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 1000
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,16 @@ class InfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        if FIRAuth.auth()?.currentUser != nil {
+//            identifier = "notiSegue"
+//        }
+//    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if FIRAuth.auth()?.currentUser != nil {
+//            segue.identifier = "notiSegue"
+//        }
+//    }
     
     @IBAction func goToMdcButton(_ sender: AnyObject) {
         let url = URL(string: "http://www.miamidadeculinary.com")
@@ -83,6 +96,22 @@ class InfoViewController: UIViewController {
     }
     
     
+    
+    @IBAction func goToViewButton(_ sender: UIButton) {
+        
+               
+        if isLogIn() {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "notif") as! NotificationViewController
+            self.present(controller, animated: true, completion: nil)
+        }else{
+            let controller = storyboard?.instantiateViewController(withIdentifier: "logIn") as! ManagerLogInViewController
+            self.present(controller, animated: true, completion: nil)
+        }
+        
+        
+        
+        
+    }
 
    
 }

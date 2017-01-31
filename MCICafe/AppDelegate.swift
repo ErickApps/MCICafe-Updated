@@ -60,7 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         
-        FIRDatabase.database().persistenceEnabled = true
+        //FIRDatabase.database().persistenceEnabled = true
+//        let menuRef = FIRDatabase.database().reference(withPath: "menu")
+//        menuRef.keepSynced(true)
         
         
         // Add observer for InstanceID token refresh callback.

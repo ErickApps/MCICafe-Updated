@@ -48,7 +48,7 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
                 controller.item = menuItem
                 controller.indexKey = String(indexPath.row)
                 controller.nodeKey = self.nodeKey
-                
+                controller.endOfIndex = String(self.DrinksArr.count)
                 
                 //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 //                controller.navigationItem.leftItemsSupplementBackButton = true

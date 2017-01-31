@@ -35,6 +35,11 @@ struct Menu {
     var cost: String
         
     }
+class Me {
+    var description: String?
+    var title: String?
+    var cost: String?
+}
 
 
 
@@ -43,20 +48,21 @@ func unWrapMenu(snapshot: FIRDataSnapshot, nodeKey: String) -> [Menu] {
         var itemsArr: NSArray = []
         var menuItems: [Menu] = []
         let menuDic = snapshot.value as! NSDictionary
+    print(menuDic.object(forKey: nodeKey))
     
         itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
     
     
         for item in itemsArr  {
-            let dic = item as! NSDictionary
+            let dic = item as? NSDictionary
     
-            if let title = dic.value(forKey: strValues.title.rawValue) as? String,let cost = dic.value(forKey: strValues.cost.rawValue) as? String, let description = dic.value(forKey: strValues.description.rawValue) as? String{
+            if let title = dic?.value(forKey: strValues.title.rawValue) as? String,let cost = dic?.value(forKey: strValues.cost.rawValue) as? String, let description = dic?.value(forKey: strValues.description.rawValue) as? String{
                  menuItems.append(Menu.init(description: description, title: title, cost: cost))
             }
             
             
-            if (dic.value(forKey: strValues.description.rawValue) == nil) {
-                if let title = dic.value(forKey: strValues.title.rawValue) as? String,let cost = dic.value(forKey: strValues.cost.rawValue) as? String{
+            if (dic?.value(forKey: strValues.description.rawValue) == nil) {
+                if let title = dic?.value(forKey: strValues.title.rawValue) as? String,let cost = dic?.value(forKey: strValues.cost.rawValue) as? String{
                     menuItems.append(Menu.init(description: nil, title: title, cost: cost))
                 }
             }
@@ -94,6 +100,13 @@ func getChildLocation(nodeKey: String) -> FIRDatabaseReference {
 
     return childLocation
     
+}
+
+func isLogIn() -> Bool {
+    if FIRAuth.auth()?.currentUser != nil {
+        return true
+    }
+    return false
 }
 
 

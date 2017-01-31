@@ -16,6 +16,7 @@ import FirebaseDatabase
 
 class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
+  var refreshControl: UIRefreshControl!
   @IBOutlet var tableView: UITableView!  
    let nodeKey = "specials"
     
@@ -31,17 +32,33 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
           
         tableView.delegate = self
         tableView.dataSource = self
-        getMenu()
+        
+        
+        
+//        let menuRef = FIRDatabase.database().reference(withPath: "menu")
+//        menuRef.keepSynced(true)
+        
+        
+        
+        
+//        refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
+//        tableView.addSubview(refreshControl)
+//        
+       getMenu()
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        var editEnable: Bool = false
-        if FIRAuth.auth()?.currentUser != nil {
-            editEnable = true
-            tableView.allowsSelection = editEnable
-        }
+        
+        
+        tableView.allowsSelection = isLogIn()
 
 
+    }
+    func refresh(sender:AnyObject) {
+        //  your code to refresh tableView
+        getMenu()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,7 +94,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
                 controller.item = menuItem
                 controller.indexKey = String(indexPath.row)
                 controller.nodeKey = self.nodeKey
-                
+                controller.endOfIndex = String(self.specialsArr.count)
                 
 //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
               controller.navigationItem.leftItemsSupplementBackButton = true
@@ -106,6 +123,30 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
             }
 
     }
+//    func retrieve(){
+//        var ref: FIRDatabaseReference!
+//        
+//        ref = FIRDatabase.database().reference()
+//        
+//        ref.queryOrdered(byChild: "specials").observe(.childAdded, with: {
+//            (snapshot) in
+//            
+//            
+//            if let dictionary = snapshot.value as? [String:AnyObject]{
+//                
+//                let book = Me()
+//                
+//                book.setValuesForKeys(dictionary)
+//                
+//                self.bookList.append(book)
+//                DispatchQueue.main.synchronously(execute: {
+//                    self.tableView.reloadData()
+//                })
+//                
+//                
+//            }
+//        })
+   // }
     
     
 
