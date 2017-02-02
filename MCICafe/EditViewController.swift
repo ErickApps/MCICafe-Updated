@@ -75,6 +75,9 @@ class EditViewController: UIViewController {
         
     }
     
+    @IBAction func backButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func editButton(_ sender: UIButton) {
         
@@ -83,27 +86,6 @@ class EditViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
 
         
-//        let ref = getChildLocation(nodeKey: nodeKey!)
-//        
-//                if nodeKey ==  nodeLocation.coffee.rawValue || nodeKey ==  nodeLocation.softDrink.rawValue{
-//            if let title = titleTextField.text,
-//               let cost = costTextField.text
-//            {
-//                let post = ["title": title,"cost": cost]
-//                ref.updateChildValues([indexKey!: post])
-//            }
-//        
-//        }else {
-//                    if let title = titleTextField.text, let description = descripitionTextField.text, let cost = costTextField.text {
-//                        let post = ["title": title,
-//                                    "description": description,
-//                                    "cost": cost]
-//                        ref.updateChildValues([indexKey!: post])
-//                        
-//                    }
-//
-//            
-//        }
     }
     
     @IBAction func addButton(_ sender: UIButton) {
@@ -124,7 +106,7 @@ class EditViewController: UIViewController {
         
         var startIndex = Int(indexKey!)!
         
-               
+        
         
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -142,26 +124,6 @@ class EditViewController: UIViewController {
             
         self.dismiss(animated: true, completion: nil)
 
-        
-        
-        
-        
-       // ref.observeSingleEvent(of: <#T##FIRDataEventType#>, with: <#T##(FIRDataSnapshot) -> Void#>)
-        
-//        ref.observe(., with: <#T##(FIRDataSnapshot) -> Void#>)
-        
-        
-//        print(ref.child(indexKey!))
-//        ref.child(indexKey!).setValue(ref.child("1") as! NSDictionary)
-         //ref.child(indexKey!).removeValue()
-//        for i in startIndex..<endIndex {
-//            
-//            //ref.updateChildValues([String(i+1): String(i)])
-//            
-//            ref.child(indexKey!).setValue(ref.child("1"))
-//        }
-        
-        
         
     }
     func configureView() {
@@ -213,84 +175,11 @@ class EditViewController: UIViewController {
             
         })
 
-//        switch operation {
-//        case "edit": action = "edit"
-//        case "add": action = "add"
-//        default: break
-//        }
-        
-        
-//        if nodeKey ==  nodeLocation.coffee.rawValue || nodeKey ==  nodeLocation.softDrink.rawValue{
-//            if let title = titleTextField.text,
-//                let cost = costTextField.text
-//            {
-//                let post = ["title": title,"cost": cost]
-//                ref.updateChildValues([index: post])
-//            }
-//            
-//        }else {
-//            if let title = titleTextField.text, let description = descripitionTextField.text, let cost = costTextField.text {
-//                let post = ["title": title,
-//                            "description": description,
-//                            "cost": cost]
-//                ref.updateChildValues([index: post])
-//                
-//            }
-//            
-//            
-//        }
+
 
     }
     
-    func sendMessage()  {
-        
-        let token = FIRInstanceID.instanceID().token()!
-//        var request = URLRequest(url: URL(string: "https://fcm.googleapis.com/fcm/send")!)
-//
-//        request.httpMethod = "POST"
-//        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-//        request.setValue("key=AAAAL644vRY:APA91bGsDOi2kNyK5pnRjkvBVOK47-UhllnHIk3_33PP4O0C0os2ur1YpY4l-KPuRGl1f-GoBgkh_8q3Xk4Ttdc_sdNl5UHC-VxMyY7BxTJuzu0hb65rSyjbGvWuAR2GW_JxF9X9r0qmHZD2UR7SYSt6YFrys3lSvw", forHTTPHeaderField: "Authorization")
-//        
-//        //let postParams: [String : Any] = ["to": token, "notification": ["body": "bodmmy", "title": "This is the title."]]
-//    
-//       //let postParams: [String : Any] = ["to": "/topics/notification", "data": ["body": "bodmmy", "title": "This is the title."]]
-//        
-//        let postParams: [String: Any] = [
-//            "to": "/topics/notification",
-//            "data": [
-//                "message": "This is the body."]]
-//        
-//        do
-//        {
-//            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
-//            print("My paramaters: \(postParams)")
-//        }
-//        catch
-//        {
-//            print("Caught an error: \(error)")
-//        }
-//        
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            
-//            if let realResponse = response as? HTTPURLResponse
-//            {
-//                if realResponse.statusCode != 200
-//                {
-//                    print("Not a 200 response")
-//                }
-//            }
-//            
-//            if let postString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as? String
-//            {
-//                print("POST: \(postString)")
-//            }
-//        }
-//        
-//        task.resume()
-        
-    }
-
-
+    
 
    
 }

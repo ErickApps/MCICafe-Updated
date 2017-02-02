@@ -16,6 +16,7 @@ import FirebaseDatabase
 
 class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var dateLabel: UILabel!
   var refreshControl: UIRefreshControl!
   @IBOutlet var tableView: UITableView!  
    let nodeKey = "specials"
@@ -32,6 +33,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
           
         tableView.delegate = self
         tableView.dataSource = self
+        
         
         
         
