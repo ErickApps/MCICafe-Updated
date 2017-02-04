@@ -12,7 +12,7 @@ import Firebase
 
 
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, UITextFieldDelegate {
     
     var item: Menu?
     var indexKey: String?
@@ -42,11 +42,12 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
         addButton.isHidden = true
         deleteButton.isHidden = true
+    
         self.configureView()
         
-        
-
-        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
+        view.addGestureRecognizer(tap)
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,21 +60,41 @@ class EditViewController: UIViewController {
             editButton.isHidden = false
             addButton.isHidden = true
             deleteButton.isHidden = true
+            hideLabel(bool: false)
+            hideTextField(bool: false)
            
         }else if sender.selectedSegmentIndex == 1 {
-            editButton.isHidden = true
             addButton.isHidden = false
+            editButton.isHidden = true
             deleteButton.isHidden = true
+            hideLabel(bool: true)
+            hideTextField(bool: false)
         }
         else if sender.selectedSegmentIndex == 2 {
             editButton.isHidden = true
             addButton.isHidden = true
             deleteButton.isHidden = false
+            hideTextField(bool: true)
+            hideLabel(bool: false)
         }
 
 
         
     }
+    func keyboardDismiss() {
+        titleTextField.resignFirstResponder()
+        descripitionTextField.resignFirstResponder()
+        costTextField.resignFirstResponder()
+    }
+    
+    
+    //Dismiss keyboard using Return Key (Done) Button
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        keyboardDismiss()
+        
+        return true
+    }
+
     
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -89,13 +110,18 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func addButton(_ sender: UIButton) {
-        
-        
-
-        
         operation(operationType: "add")
-        
+    }
+    func hideLabel(bool: Bool) {
+        costLabel.isHidden = bool
+        descriptionLabel.isHidden = bool
+        titleLabel.isHidden = bool
 
+    }
+    func hideTextField(bool: Bool) {
+        costTextField.isHidden = bool
+        descripitionTextField.isHidden = bool
+        titleTextField.isHidden = bool
 
     }
 
@@ -104,7 +130,7 @@ class EditViewController: UIViewController {
         let ref = getChildLocation(nodeKey: nodeKey!)
         
         
-        var startIndex = Int(indexKey!)!
+        let startIndex = Int(indexKey!)!
         
         
         

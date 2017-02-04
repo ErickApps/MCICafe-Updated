@@ -40,16 +40,6 @@ class InfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        if FIRAuth.auth()?.currentUser != nil {
-//            identifier = "notiSegue"
-//        }
-//    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if FIRAuth.auth()?.currentUser != nil {
-//            segue.identifier = "notiSegue"
-//        }
-//    }
     
     @IBAction func goToMdcButton(_ sender: AnyObject) {
         let url = URL(string: "http://www.miamidadeculinary.com")

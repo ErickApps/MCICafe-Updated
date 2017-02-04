@@ -48,7 +48,6 @@ func unWrapMenu(snapshot: FIRDataSnapshot, nodeKey: String) -> [Menu] {
         var itemsArr: NSArray = []
         var menuItems: [Menu] = []
         let menuDic = snapshot.value as! NSDictionary
-    print(menuDic.object(forKey: nodeKey))
     
         itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
     
@@ -108,36 +107,6 @@ func isLogIn() -> Bool {
     }
     return false
 }
-
-
-
-//func unWrapDrink(snapshot: FIRDataSnapshot, nodeKey: String) -> [MenuSpecials] {
-//    
-//    var itemsArr: NSArray = []
-//    var menuItems: [MenuSpecials] = []
-//    let menuDic = snapshot.value as! NSDictionary
-//    
-//    itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
-//    
-//    for item in itemsArr  {
-//        let dic = item as! NSDictionary
-//        
-//        let title = dic.value(forKey: strValues.title.rawValue) as! String
-//        let cost = dic.value(forKey: strValues.cost.rawValue) as! String
-//        
-//        
-//        menuItems.append(MenuSpecials.init(title: title, cost: cost))
-//        
-//        
-//    }
-//    return menuItems
-//
-//
-//}
-
-
-
-
 
 
 

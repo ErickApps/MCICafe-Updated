@@ -31,8 +31,6 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         getMenu()
-
-        // Do any additional setup after loading the view.
         
     }
 
@@ -50,8 +48,6 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
                 controller.nodeKey = self.nodeKey
                 controller.endOfIndex = String(self.DrinksArr.count)
                 
-                //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-                //                controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
@@ -68,7 +64,7 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let drink = self.DrinksArr[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = drink.title
-        cell.detailTextLabel?.text = drink.cost
+        cell.detailTextLabel?.text = "$\(drink.cost)"
         
         return cell
     }
@@ -79,7 +75,7 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         ref = FIRDatabase.database().reference()
         
-        ref.child("menu").child("drinks").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("menu").child("drinks").observe(FIRDataEventType.value, with: { (snapshot) in
             
  
             self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: nodeLocation.coffee.rawValue), forKey: nodeLocation.coffee.rawValue)

@@ -51,8 +51,6 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 controller.endOfIndex = String(self.foodArr.count)
                 
                 
-                //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-                //                controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
@@ -71,7 +69,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         cell.titleLabel.text = foodMenu.title
         cell.descriptionLabel.text = foodMenu.description
-        cell.costLabel.text = foodMenu.cost
+        cell.costLabel.text = "$\(foodMenu.cost)"
         
 
         
@@ -100,7 +98,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         ref = FIRDatabase.database().reference()
         
-        ref.child("menu").child("food").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("menu").child("food").observe(FIRDataEventType.value, with: { (snapshot) in
             
             
             

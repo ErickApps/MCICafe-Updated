@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7180B4B1E12518F0025279D /* SpecialsCell.swift */; };
-		A7240BF01E3839BA0014A83D /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240BEF1E3839BA0014A83D /* MenuData.swift */; };
 		A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74262B21E0E3C870009B34A /* ModelMenu.swift */; };
 		A7712FA91E3C410E00F02847 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7712FA81E3C410E00F02847 /* NotificationViewController.swift */; };
 		A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79352301E0E362B00C36D82 /* AppDelegate.swift */; };
@@ -32,7 +31,6 @@
 		128937136E066EF1F1571E32 /* Pods_MCICafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCICafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C7D760F5CF16DF24C7759D2 /* Pods-MCICafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.release.xcconfig"; sourceTree = "<group>"; };
 		A7180B4B1E12518F0025279D /* SpecialsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialsCell.swift; sourceTree = "<group>"; };
-		A7240BEF1E3839BA0014A83D /* MenuData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
 		A74262B21E0E3C870009B34A /* ModelMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMenu.swift; sourceTree = "<group>"; };
 		A7712FA81E3C410E00F02847 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A793522D1E0E362B00C36D82 /* MCICafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCICafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +109,6 @@
 				A74262B21E0E3C870009B34A /* ModelMenu.swift */,
 				A7180B4B1E12518F0025279D /* SpecialsCell.swift */,
 				A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */,
-				A7240BEF1E3839BA0014A83D /* MenuData.swift */,
 				A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */,
 				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
 				A7712FA81E3C410E00F02847 /* NotificationViewController.swift */,
@@ -262,7 +259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7240BF01E3839BA0014A83D /* MenuData.swift in Sources */,
 				A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */,
 				A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */,
 				A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */,

@@ -17,10 +17,8 @@ import FirebaseDatabase
 class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var dateLabel: UILabel!
-  var refreshControl: UIRefreshControl!
-  @IBOutlet var tableView: UITableView!  
-   let nodeKey = "specials"
-    
+    @IBOutlet var tableView: UITableView!
+    let nodeKey = "specials"
     var specialsArr: [Menu] = [] {
         didSet {
             tableView.reloadData()
@@ -30,39 +28,18 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        
-        
-        
-//        let menuRef = FIRDatabase.database().reference(withPath: "menu")
-//        menuRef.keepSynced(true)
-        
-        
-        
-        
-//        refreshControl = UIRefreshControl()
-//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-//        refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
-//        tableView.addSubview(refreshControl)
-//        
-       getMenu()
+        getMenu()
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        
-        
         tableView.allowsSelection = isLogIn()
-
-
     }
-    func refresh(sender:AnyObject) {
-        //  your code to refresh tableView
-        getMenu()
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -83,7 +60,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         
         cell.titleCellLabel.text = dailySpecial.title
         cell.descriptionCellLabel.text = dailySpecial.description
-        cell.costCellLabel.text = dailySpecial.cost
+        cell.costCellLabel.text = "$\(dailySpecial.cost)"
         
         return cell
     }
@@ -98,60 +75,25 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
                 controller.nodeKey = self.nodeKey
                 controller.endOfIndex = String(self.specialsArr.count)
                 
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-              controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
     
 
     
-    
-    
     func getMenu(){
         
         var ref: FIRDatabaseReference!
         
-            ref = FIRDatabase.database().reference()
+        ref = FIRDatabase.database().reference().child("menu")
         
-            ref.child("menu").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.observe(FIRDataEventType.value, with: { (snapshot) in
+            
+            self.specialsArr = unWrapMenu(snapshot: snapshot, nodeKey: self.nodeKey)
+            
+        })
 
-            self.specialsArr.append(contentsOf: unWrapMenu(snapshot: snapshot, nodeKey: self.nodeKey))
 
-                
-                })
-            { (error) in
-                print(error.localizedDescription)
-            }
-
-    }
-//    func retrieve(){
-//        var ref: FIRDatabaseReference!
-//        
-//        ref = FIRDatabase.database().reference()
-//        
-//        ref.queryOrdered(byChild: "specials").observe(.childAdded, with: {
-//            (snapshot) in
-//            
-//            
-//            if let dictionary = snapshot.value as? [String:AnyObject]{
-//                
-//                let book = Me()
-//                
-//                book.setValuesForKeys(dictionary)
-//                
-//                self.bookList.append(book)
-//                DispatchQueue.main.synchronously(execute: {
-//                    self.tableView.reloadData()
-//                })
-//                
-//                
-//            }
-//        })
-   // }
-    
-    
-
+  }
 
 }
-
