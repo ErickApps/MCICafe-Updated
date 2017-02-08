@@ -12,7 +12,7 @@ import Firebase
 
 
 
-class EditViewController: UIViewController, UITextFieldDelegate {
+class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate{
     
     var item: Menu?
     var indexKey: String?
@@ -20,28 +20,27 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     var endOfIndex: String?
     
 
-
-
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descripitionTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
     
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
-    
+
     
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton.isHidden = true
         deleteButton.isHidden = true
+         
     
         self.configureView()
         
@@ -60,22 +59,22 @@ class EditViewController: UIViewController, UITextFieldDelegate {
             editButton.isHidden = false
             addButton.isHidden = true
             deleteButton.isHidden = true
-            hideLabel(bool: false)
+            configureView()
             hideTextField(bool: false)
            
         }else if sender.selectedSegmentIndex == 1 {
             addButton.isHidden = false
             editButton.isHidden = true
             deleteButton.isHidden = true
-            hideLabel(bool: true)
+            clearText()
             hideTextField(bool: false)
         }
         else if sender.selectedSegmentIndex == 2 {
             editButton.isHidden = true
             addButton.isHidden = true
             deleteButton.isHidden = false
-            hideTextField(bool: true)
-            hideLabel(bool: false)
+            hideTextField(bool: false)
+            configureView()
         }
 
 
@@ -83,9 +82,10 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     }
     func keyboardDismiss() {
         titleTextField.resignFirstResponder()
-        descripitionTextField.resignFirstResponder()
         costTextField.resignFirstResponder()
+        descriptionTextView.resignFirstResponder()
     }
+    
     
     
     //Dismiss keyboard using Return Key (Done) Button
@@ -94,6 +94,11 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
+    func clearText() {
+        costTextField.text = nil
+        titleTextField.text = nil
+        descriptionTextView.text = nil
+    }
 
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -101,38 +106,31 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func editButton(_ sender: UIButton) {
-        
-        
         operation(operationType: "edit")
         self.dismiss(animated: true, completion: nil)
-
-        
     }
     
     @IBAction func addButton(_ sender: UIButton) {
         operation(operationType: "add")
     }
-    func hideLabel(bool: Bool) {
-        costLabel.isHidden = bool
-        descriptionLabel.isHidden = bool
-        titleLabel.isHidden = bool
-
-    }
+//    func hideLabel(bool: Bool) {
+//        costLabel.isHidden = bool
+//        descriptionLabel.isHidden = bool
+//        titleLabel.isHidden = bool
+//
+//    }
     func hideTextField(bool: Bool) {
         costTextField.isHidden = bool
-        descripitionTextField.isHidden = bool
+        descriptionTextView.isHidden = bool
         titleTextField.isHidden = bool
-
+        
     }
 
     @IBAction func deleteButton(_ sender: UIButton) {
         
         let ref = getChildLocation(nodeKey: nodeKey!)
         
-        
         let startIndex = Int(indexKey!)!
-        
-        
         
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -154,11 +152,9 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     }
     func configureView() {
         // Update the user interface.
-        
-        
-        titleLabel.text = item?.title
-        descriptionLabel.text = item?.description ?? ""
-        costLabel.text = item?.cost
+        titleTextField.text = item?.title
+        descriptionTextView.text = item?.description ?? "Description"
+        costTextField.text = item?.cost
         
         
     }
@@ -186,7 +182,7 @@ class EditViewController: UIViewController, UITextFieldDelegate {
                 }
                 
             }else {
-                if let title = self.titleTextField.text, let description = self.descripitionTextField.text, let cost = self.costTextField.text {
+                if let title = self.titleTextField.text, let description = self.descriptionTextView.text, let cost = self.costTextField.text {
                     let post = ["title": title,
                                 "description": description,
                                 "cost": cost]

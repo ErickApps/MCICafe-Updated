@@ -20,6 +20,7 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         msgTexField.delegate = self
+        
         registerForKeyboardNotifications()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
         view.addGestureRecognizer(tap)
@@ -45,6 +46,28 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
         
     }
+    func animateTextField(textField: UITextField, up: Bool)
+    {
+        let movementDistance:CGFloat = -130
+        let movementDuration: Double = 0.3
+        
+        var movement:CGFloat = 0
+        if up
+        {
+            movement = movementDistance
+        }
+        else
+        {
+            movement = -movementDistance
+        }
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
+    
     
 //    func deregisterFromKeyboardNotifications(){
 //        //Removing notifies on keyboard appearing
@@ -61,7 +84,7 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
         
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
-        self.scrollView.isScrollEnabled = false
+        //self.scrollView.isScrollEnabled = false
         
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
@@ -85,11 +108,13 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField){
         msgTexField = textField
+//        self.animateTextField(textField: textField, up:true)
         
     }
     
     func textFieldDidEndEditing(_ textField: UITextField){
         msgTexField.text = nil
+//        self.animateTextField(textField: textField, up:false)
     }
     
     func keyboardDismiss() {
