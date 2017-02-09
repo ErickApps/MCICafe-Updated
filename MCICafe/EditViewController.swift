@@ -99,21 +99,24 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         descriptionTextView.text = nil
     }
 
-    
-    @IBAction func backButton(_ sender: UIButton) {
+    @IBAction func backButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     @IBAction func submitButton(_ sender: UIButton) {
         
         
-        if self.segmentModify.isEnabledForSegment(at: 0) {
+        if self.segmentModify.selectedSegmentIndex == 0 {
             operation(operationType: "edit")
             print(segmentModify.titleForSegment(at: 0)!)
             self.dismiss(animated: true, completion: nil)
-        }else if self.segmentModify.isEnabledForSegment(at: 1){
+        }else if self.segmentModify.selectedSegmentIndex == 1{
             operation(operationType: "add")
-        }else if self.segmentModify.isEnabledForSegment(at: 2){
+            print(segmentModify.titleForSegment(at: 1)!)
+
+        }else if self.segmentModify.selectedSegmentIndex == 2{
             delete()
         }
 
