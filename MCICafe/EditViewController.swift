@@ -19,28 +19,26 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     var nodeKey: String?
     var endOfIndex: String?
     
+    @IBOutlet weak var segmentModify: UISegmentedControl!
 
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var descripitionTextField: UITextField!
+    
     @IBOutlet weak var costTextField: UITextField!
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var costLabel: UILabel!
+    
 
     
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addButton.isHidden = true
-        deleteButton.isHidden = true
-         
+//        addButton.isHidden = true
+//        deleteButton.isHidden = true
+        
     
         self.configureView()
         
@@ -56,23 +54,24 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBAction func optionsSegment(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            editButton.isHidden = false
-            addButton.isHidden = true
-            deleteButton.isHidden = true
+//            editButton.isHidden = false
+//            addButton.isHidden = true
+//            deleteButton.isHidden = true
             configureView()
             hideTextField(bool: false)
            
         }else if sender.selectedSegmentIndex == 1 {
-            addButton.isHidden = false
-            editButton.isHidden = true
-            deleteButton.isHidden = true
+//            addButton.isHidden = false
+//            editButton.isHidden = true
+//            deleteButton.isHidden = true
             clearText()
             hideTextField(bool: false)
         }
         else if sender.selectedSegmentIndex == 2 {
-            editButton.isHidden = true
-            addButton.isHidden = true
-            deleteButton.isHidden = false
+            
+//            editButton.isHidden = true
+//            addButton.isHidden = true
+//            deleteButton.isHidden = false
             hideTextField(bool: false)
             configureView()
         }
@@ -105,9 +104,20 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func editButton(_ sender: UIButton) {
-        operation(operationType: "edit")
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func submitButton(_ sender: UIButton) {
+        
+        
+        if self.segmentModify.isEnabledForSegment(at: 0) {
+            operation(operationType: "edit")
+            print(segmentModify.titleForSegment(at: 0)!)
+            self.dismiss(animated: true, completion: nil)
+        }else if self.segmentModify.isEnabledForSegment(at: 1){
+            operation(operationType: "add")
+        }else if self.segmentModify.isEnabledForSegment(at: 2){
+            delete()
+        }
+
+        
     }
     
     @IBAction func addButton(_ sender: UIButton) {
@@ -126,7 +136,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
     }
 
-    @IBAction func deleteButton(_ sender: UIButton) {
+    func delete() {
         
         let ref = getChildLocation(nodeKey: nodeKey!)
         

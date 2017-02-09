@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 
-class NotificationViewController: UIViewController,UITextFieldDelegate {
+class NotificationViewController: UIViewController,UITextViewDelegate {
 
-    @IBOutlet weak var msgTexField: UITextField!
+    @IBOutlet weak var msgTexField: UITextView!
     @IBOutlet var scrollView: UIScrollView!
     
     
@@ -20,6 +20,10 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         msgTexField.delegate = self
+        
+        msgTexField.layer.borderColor = #colorLiteral(red: 0.7950288653, green: 0.7827144265, blue: 0.1463494599, alpha: 1).cgColor
+        msgTexField.layer.borderWidth = 1.0
+        msgTexField.layer.cornerRadius = 5.0
         
         registerForKeyboardNotifications()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
@@ -40,31 +44,8 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    @IBAction func exitButton(_ sender: UIButton) {
-        
-
+    @IBAction func exitDoneButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
-        
-    }
-    func animateTextField(textField: UITextField, up: Bool)
-    {
-        let movementDistance:CGFloat = -130
-        let movementDuration: Double = 0.3
-        
-        var movement:CGFloat = 0
-        if up
-        {
-            movement = movementDistance
-        }
-        else
-        {
-            movement = -movementDistance
-        }
-        UIView.beginAnimations("animateTextField", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
     }
     
     
@@ -84,7 +65,7 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
         
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
-        //self.scrollView.isScrollEnabled = false
+        self.scrollView.isScrollEnabled = false
         
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
@@ -106,15 +87,16 @@ class NotificationViewController: UIViewController,UITextFieldDelegate {
         self.scrollView.isScrollEnabled = false
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField){
-        msgTexField = textField
-//        self.animateTextField(textField: textField, up:true)
-        
+//    func textViewDidBeginEditing(_ textField: UITextField){
+//        msgTexField = textField
+//        
+//    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        msgTexField = textView
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField){
+    func textViewDidEndEditing(_ textView: UITextView){
         msgTexField.text = nil
-//        self.animateTextField(textField: textField, up:false)
     }
     
     func keyboardDismiss() {
