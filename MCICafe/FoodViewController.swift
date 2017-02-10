@@ -30,6 +30,9 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
+        
         getMenu()
         
         
@@ -68,7 +71,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let foodMenu = self.foodArr[(indexPath as NSIndexPath).row]
         
         cell.titleLabel.text = foodMenu.title
-        cell.descriptionLabel.text = foodMenu.description
+        cell.descriptionLabel.text = foodMenu.description ?? ""
         cell.costLabel.text = "$\(foodMenu.cost)"
         
 

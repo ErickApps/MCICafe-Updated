@@ -32,6 +32,8 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
         
         getMenu()
         

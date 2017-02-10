@@ -72,6 +72,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
 //            editButton.isHidden = true
 //            addButton.isHidden = true
 //            deleteButton.isHidden = false
+            
             hideTextField(bool: false)
             configureView()
         }
@@ -155,6 +156,13 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                     let dicData = nsArr[i+1] as! NSDictionary
                     ref.child(String(i)).setValue(dicData.dictionaryWithValues(forKeys: ["title","cost","description"]))
                 }
+                print(ref.child(String(snapshot.childrenCount-1)))
+                
+                if snapshot.childrenCount-1 == 0 {
+                    return
+                }
+        
+                
                 ref.child(String(snapshot.childrenCount-1)).removeValue()
                 
             })
