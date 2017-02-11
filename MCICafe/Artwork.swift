@@ -32,11 +32,11 @@ class Artwork: NSObject, MKAnnotation {
         return locationName
     }
     func mapItem() -> MKMapItem {
-        let addressDictionary = [String(describing: CNPostalAddress.self): subtitle]
+        let addressDictionary = [String(describing: CNPostalAddress.self): subtitle!]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
         
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = title
+        mapItem.name = title!
         
         return mapItem
     }

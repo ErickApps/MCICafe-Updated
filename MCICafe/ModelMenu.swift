@@ -101,6 +101,26 @@ func getChildLocation(nodeKey: String) -> FIRDatabaseReference {
     
 }
 
+//func displayAlert()  {
+//   
+//    
+//    let alertController = UIAlertController(title: "Destructive", message: "Simple alertView demo with Destructive and comfirm.", preferredStyle: UIAlertControllerStyle.alert)
+//    let DestructiveAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel) {
+//        (result : UIAlertAction) -> Void in
+//        print("Destructive")
+//    }
+//    
+//    
+//    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+//        (result : UIAlertAction) -> Void in
+//        
+//    }
+//    
+//    alertController.addAction(DestructiveAction)
+//    alertController.addAction(okAction)
+//    //self.presentViewController(alertController, animated: true, completion: nil)
+//}
+
 func isLogIn() -> Bool {
     if FIRAuth.auth()?.currentUser != nil {
         return true

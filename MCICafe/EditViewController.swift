@@ -39,6 +39,9 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
 //        addButton.isHidden = true
 //        deleteButton.isHidden = true
         
+        if nodeKey == "softDrink" || nodeKey == "coffee"{
+            descriptionTextView.isHidden = true
+        }
     
         self.configureView()
         
@@ -110,15 +113,21 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         
         if self.segmentModify.selectedSegmentIndex == 0 {
-            operation(operationType: "edit")
-            print(segmentModify.titleForSegment(at: 0)!)
-            self.dismiss(animated: true, completion: nil)
+         displayAlert(title: "Edit",
+            message: "\(self.titleTextField.text!)\n\(self.descriptionTextView.text!)\n\(costTextField.text!)", typeOfOperation: "edit", operation: operation(operationType:))
+            
+            
         }else if self.segmentModify.selectedSegmentIndex == 1{
-            operation(operationType: "add")
-            print(segmentModify.titleForSegment(at: 1)!)
+            displayAlert(title: "Add",
+            message: "\(self.titleTextField.text)\n\(self.descriptionTextView.text)\n\(costTextField.text)", typeOfOperation: "add", operation: operation(operationType:))
+            
+           
 
         }else if self.segmentModify.selectedSegmentIndex == 2{
-            delete()
+            
+             displayAlert(title: "To Be Delete!",message: "\(self.titleTextField.text)\n\(self.descriptionTextView.text)\n\(costTextField.text)", typeOfOperation: "delete",operation: nil)
+            
+        
         }
 
         
@@ -159,6 +168,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                 print(ref.child(String(snapshot.childrenCount-1)))
                 
                 if snapshot.childrenCount-1 == 0 {
+                    ref.child("0").setValue( ["title": "","description": "","cost": ""])
                     return
                 }
         
@@ -167,7 +177,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                 
             })
             
-        self.dismiss(animated: true, completion: nil)
+        
 
         
     }
@@ -182,7 +192,6 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     func operation(operationType: String) {
         
-//        var action: String?
         let ref = getChildLocation(nodeKey: nodeKey!)
         var index = operationType
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -200,6 +209,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                 {
                     let post = ["title": title,"cost": cost]
                     ref.updateChildValues([index: post])
+                    self.clearText()
                 }
                 
             }else {
@@ -208,6 +218,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                                 "description": description,
                                 "cost": cost]
                     ref.updateChildValues([index: post])
+                    self.clearText()
                     
                 }
                 
@@ -217,10 +228,50 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             
             
         })
+        
 
 
 
     }
+    
+    
+    func displayAlert(title: String, message: String,typeOfOperation: String, operation: ((String) -> ())?) {
+    
+        
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel) {
+            (result : UIAlertAction) -> Void in
+            
+        }
+        
+        
+        let confirmAction = UIAlertAction(title: "confirm", style: UIAlertActionStyle.default) {
+            (result : UIAlertAction) -> Void in
+            
+            if typeOfOperation == "delete" {
+                self.delete()
+                self.dismiss(animated: true, completion: nil)
+            }else if typeOfOperation == "edit" {
+                operation!(typeOfOperation)
+                self.dismiss(animated: true, completion: nil)
+            }
+            else if typeOfOperation == "add" {
+                operation!(typeOfOperation)
+                
+            }
+            
+
+           
+            
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+
     
     
 
