@@ -14,10 +14,13 @@ import Firebase
 
 class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate{
     
+    
+    
     var item: Menu?
     var indexKey: String?
     var nodeKey: String?
     var endOfIndex: String?
+    var segueId: String?
     
     @IBOutlet weak var segmentModify: UISegmentedControl!
 
@@ -27,23 +30,22 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    
-
-    
     @IBOutlet weak var submitButton: UIButton!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        addButton.isHidden = true
-//        deleteButton.isHidden = true
+
+        self.configureView()
+        if segueId != nil {
+            segmentModify.isHidden = true
+            clearText()
+        }
         
         if nodeKey == "softDrink" || nodeKey == "coffee"{
             descriptionTextView.isHidden = true
         }
-    
-        self.configureView()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
         view.addGestureRecognizer(tap)
@@ -57,24 +59,15 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBAction func optionsSegment(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-//            editButton.isHidden = false
-//            addButton.isHidden = true
-//            deleteButton.isHidden = true
             configureView()
             hideTextField(bool: false)
            
         }else if sender.selectedSegmentIndex == 1 {
-//            addButton.isHidden = false
-//            editButton.isHidden = true
-//            deleteButton.isHidden = true
+
             clearText()
             hideTextField(bool: false)
         }
         else if sender.selectedSegmentIndex == 2 {
-            
-//            editButton.isHidden = true
-//            addButton.isHidden = true
-//            deleteButton.isHidden = false
             
             hideTextField(bool: false)
             configureView()
@@ -111,21 +104,26 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBAction func submitButton(_ sender: UIButton) {
         
+        if (titleTextField.text?.isEmpty)!  &&  (costTextField.text?.isEmpty)!{
+            okAlert(title: "Empty Text",message: "cannot perform opearion on an empty text")
+            return
+        }
+        
         
         if self.segmentModify.selectedSegmentIndex == 0 {
          displayAlert(title: "Edit",
             message: "\(self.titleTextField.text!)\n\(self.descriptionTextView.text!)\n\(costTextField.text!)", typeOfOperation: "edit", operation: operation(operationType:))
             
             
-        }else if self.segmentModify.selectedSegmentIndex == 1{
+        }else if self.segmentModify.selectedSegmentIndex == 1 || self.segmentModify.isHidden{
             displayAlert(title: "Add",
-            message: "\(self.titleTextField.text)\n\(self.descriptionTextView.text)\n\(costTextField.text)", typeOfOperation: "add", operation: operation(operationType:))
+            message: "\(self.titleTextField.text!)\n\(self.descriptionTextView.text!)\n\(costTextField.text!)", typeOfOperation: "add", operation: operation(operationType:))
             
            
 
         }else if self.segmentModify.selectedSegmentIndex == 2{
             
-             displayAlert(title: "To Be Delete!",message: "\(self.titleTextField.text)\n\(self.descriptionTextView.text)\n\(costTextField.text)", typeOfOperation: "delete",operation: nil)
+             displayAlert(title: "Are you sure you want to delete this item?",message: "\(self.titleTextField.text!)\n\(self.descriptionTextView.text!)\n\(costTextField.text!)", typeOfOperation: "delete",operation: nil)
             
         
         }
@@ -183,9 +181,9 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     }
     func configureView() {
         // Update the user interface.
-        titleTextField.text = item?.title
+        titleTextField.text = item?.title ?? "Title"
         descriptionTextView.text = item?.description ?? "Description"
-        costTextField.text = item?.cost
+        costTextField.text = item?.cost ?? "cost"
         
         
     }
@@ -271,6 +269,21 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         self.present(alertController, animated: true, completion: nil)
         
     }
+    func okAlert(title: String, message: String) {
+        
+        
+        let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+        
+        }))
+        
+        
+        present(refreshAlert, animated: true, completion: nil)
+        
+        
+    }
+
 
     
     

@@ -21,6 +21,8 @@
 		A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72661E25BC07008605CF /* InfoViewController.swift */; };
 		A79B72691E25CD25008605CF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72681E25CD25008605CF /* Artwork.swift */; };
 		A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B726A1E25D1CE008605CF /* OpenMap.swift */; };
+		A79C38201E4FBBF000DD2966 /* NotiTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */; };
+		A79C38221E4FBD4D00DD2966 /* NotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */; };
 		A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */; };
 		A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */; };
 		A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */; };
@@ -46,6 +48,8 @@
 		A79B72661E25BC07008605CF /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A79B72681E25CD25008605CF /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		A79B726A1E25D1CE008605CF /* OpenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMap.swift; sourceTree = "<group>"; };
+		A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTextViewController.swift; sourceTree = "<group>"; };
+		A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTableViewCell.swift; sourceTree = "<group>"; };
 		A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		A7DDCA371E260F4300B90839 /* MCICafe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MCICafe.entitlements; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				A79B72661E25BC07008605CF /* InfoViewController.swift */,
 				A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */,
 				A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */,
+				A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */,
+				A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */,
 				A79B726A1E25D1CE008605CF /* OpenMap.swift */,
 				A79B72681E25CD25008605CF /* Artwork.swift */,
 				A79352361E0E362B00C36D82 /* Main.storyboard */,
@@ -260,8 +266,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */,
+				A79C38221E4FBD4D00DD2966 /* NotiTableViewCell.swift in Sources */,
 				A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */,
 				A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */,
+				A79C38201E4FBBF000DD2966 /* NotiTextViewController.swift in Sources */,
 				A79352351E0E362B00C36D82 /* FoodViewController.swift in Sources */,
 				A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */,
 				A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */,

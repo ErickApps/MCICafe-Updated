@@ -35,21 +35,17 @@ struct Menu {
     var cost: String
         
     }
-class Me {
-    var description: String?
-    var title: String?
-    var cost: String?
-}
 
 
 
-func unWrapMenu(snapshot: FIRDataSnapshot, nodeKey: String) -> [Menu] {
+
+func unWrapMenu(snapshot: FIRDataSnapshot) -> [Menu] {
     
-        var itemsArr: NSArray = []
+       // var itemsArr: NSArray = []
         var menuItems: [Menu] = []
-        let menuDic = snapshot.value as! NSDictionary
+        let itemsArr = snapshot.value as! NSArray
     
-        itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
+        //itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
     
     
         for item in itemsArr  {

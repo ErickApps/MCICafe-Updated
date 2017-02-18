@@ -10,20 +10,38 @@ import UIKit
 import Firebase
 
 
-class NotificationViewController: UIViewController,UITextViewDelegate {
+class NotificationViewController: UIViewController,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var msgTexField: UITextView!
     @IBOutlet var scrollView: UIScrollView!
     
+    @IBOutlet weak var tableView: UITableView!
+    let userDMsg = UserDefaults.standard
     
+    var msgArr: Array <String> = [] {
+        didSet {
+            tableView.reloadData()
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        msgTexField.delegate = self
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
+        notiMsgFireBase()
+        
+        msgTexField.delegate = self
         msgTexField.layer.borderColor = #colorLiteral(red: 0.7950288653, green: 0.7827144265, blue: 0.1463494599, alpha: 1).cgColor
         msgTexField.layer.borderWidth = 1.0
         msgTexField.layer.cornerRadius = 5.0
+        
+       
+        
+        
         
         registerForKeyboardNotifications()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
@@ -117,7 +135,7 @@ class NotificationViewController: UIViewController,UITextViewDelegate {
         let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
         }))
         
         
@@ -130,43 +148,82 @@ class NotificationViewController: UIViewController,UITextViewDelegate {
         
         if msgTexField.text == "" {
             displayAlert(title: "empty", message: "cannot send empty message")
-        }
-        
-        var request = URLRequest(url: URL(string: "https://fcm.googleapis.com/fcm/send")!)
-        
-        request.httpMethod = "POST"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.setValue("key=AAAAL644vRY:APA91bGsDOi2kNyK5pnRjkvBVOK47-UhllnHIk3_33PP4O0C0os2ur1YpY4l-KPuRGl1f-GoBgkh_8q3Xk4Ttdc_sdNl5UHC-VxMyY7BxTJuzu0hb65rSyjbGvWuAR2GW_JxF9X9r0qmHZD2UR7SYSt6YFrys3lSvw", forHTTPHeaderField: "Authorization")
-       
-        
-        let postParams: [String : Any] = ["to": "/topics/notification","priority": "high", "content_available": true,"time_to_live" : 5, "notification": ["body": msgTexField.text!]]
-        
-        do
-        {
-            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
-        }
-        catch
-        {
-            print("Caught an error: \(error)")
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            return
+        }else {
             
-            if let realResponse = response as? HTTPURLResponse
-            {
-                if realResponse.statusCode != 200
+            let msgText = msgTexField.text!
+            
+            var request = URLRequest(url: URL(string: "https://fcm.googleapis.com/fcm/send")!)
+            
+            request.httpMethod = "POST"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.setValue("key=AAAAL644vRY:APA91bGsDOi2kNyK5pnRjkvBVOK47-UhllnHIk3_33PP4O0C0os2ur1YpY4l-KPuRGl1f-GoBgkh_8q3Xk4Ttdc_sdNl5UHC-VxMyY7BxTJuzu0hb65rSyjbGvWuAR2GW_JxF9X9r0qmHZD2UR7SYSt6YFrys3lSvw", forHTTPHeaderField: "Authorization")
+            
+            
+            let postParams: [String : Any] = ["to": "/topics/notification","priority": "high", "content_available": true,"time_to_live" : 5, "notification": ["body": msgText]]
+            
+            let date = Date()
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month, .day, .hour,.minute], from: date)
+            let toDay = "\(components.year!)-\(components.month!)-\(components.day!)/\(components.hour!):\(components.minute!)"
+           
+           
+        
+            
+            DispatchQueue.main.async(){
+                
+                do
                 {
-                    print("Not a 200 response")
+                    request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
                 }
+                catch
+                {
+                    print("Caught an error: \(error)")
+                }
+                
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    
+                    if let realResponse = response as? HTTPURLResponse
+                    {
+                        if realResponse.statusCode != 200
+                        {
+                            print("Not a 200 response")
+                        }else {
+                            
+                            
+                            
+                            let ref = FIRDatabase.database().reference().child("notification")
+                            
+                            
+                            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                                
+                                let post = ["message": msgText]
+                                ref.updateChildValues([toDay:post])
+                                
+                                
+                            })
+                            
+                            
+                            
+                        }
+                    }
+                    
+                    
+                }
+                
+                task.resume()
+                
             }
+
             
-            if let postString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as? String
-            {
-                print("POST: \(postString)")
-            }
+            
         }
+
         
-        task.resume()
+        
+        
+        
+        
         keyboardDismiss()
         
         msgTexField.text = nil
@@ -174,6 +231,57 @@ class NotificationViewController: UIViewController,UITextViewDelegate {
         
 
     }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return msgArr.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notiCell", for: indexPath) as! NotiTableViewCell
+        
+       
+        
+    
+        let noti = self.msgArr[indexPath.row]
+        
+        cell.notificationLabel.text = noti
+        
+        return cell
+        
+    }
+    
+    func notiMsgFireBase()  {
+        var ref: FIRDatabaseReference!
+       
+        
+        ref = FIRDatabase.database().reference().child("notification")
+        
+        ref.observe(FIRDataEventType.value, with: { (snapshot) in
+            
+            let noti = snapshot.value as! [String:AnyObject]
+             var tempMsg: Array<String> = []
+            for datekey in noti.keys{
+                print(noti[datekey]!.allKeys!)
+                
+                for key in noti[datekey]!.allKeys!{
+                    let msg = noti[datekey]?[key] as! NSDictionary
+                    
+                    tempMsg.append(msg["message"]! as! String)
+                    print(msg["message"]!)
+                }
+            }
+            self.msgArr = tempMsg
+            tempMsg = []
+            print(tempMsg)
+        })
+
+    }
+
+    
+    
     
 }
 

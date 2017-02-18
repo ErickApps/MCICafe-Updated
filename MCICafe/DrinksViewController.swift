@@ -12,7 +12,8 @@ import Firebase
 class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    var ref: FIRDatabaseReference!
+    @IBOutlet weak var addbuttonItem: UIBarButtonItem!
     var drinkData: [String:[Menu]] = [:]
     
     var DrinksArr: [Menu] = []{
@@ -27,9 +28,13 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ref = FIRDatabase.database().reference().child("menu").child("drinks").child(nodeLocation.coffee.rawValue)
+        self.addbuttonItem.isEnabled = false
+        self.addbuttonItem.tintColor = UIColor.clear
+
         tableView.delegate = self
         tableView.dataSource = self
+        self.automaticallyAdjustsScrollViewInsets = false
         getMenu()
         
     }
@@ -52,6 +57,59 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if isLogIn() {
+            self.addbuttonItem.isEnabled = true
+            self.addbuttonItem.tintColor = UIColor.blue
+            tableView.allowsSelection = true
+        }
+        
+    }
+    
+    @IBAction func editItemButton(_ sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        if tableView.isEditing {
+            self.navigationItem.leftBarButtonItem?.title = "Done"
+        } else {
+            self.navigationItem.leftBarButtonItem?.title = "Edit"
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return NO if you do not want the item to be re-orderable.
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+        
+        
+        let postFrom = ["title": DrinksArr[fromIndexPath.row].title,
+                        "cost": DrinksArr[fromIndexPath.row].cost]
+    
+        let postTo = ["title": DrinksArr[toIndexPath.row].title,
+                      "cost": DrinksArr[toIndexPath.row].cost]
+        
+        
+        self.ref.updateChildValues([String(toIndexPath.row): postFrom])
+        self.ref.updateChildValues([String(fromIndexPath.row): postTo])
+        
+        
+    }
+
+
+
+    
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -71,15 +129,14 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func getMenu(){
         
-        var ref: FIRDatabaseReference!
-        
-        ref = FIRDatabase.database().reference()
-        
-        ref.child("menu").child("drinks").observe(FIRDataEventType.value, with: { (snapshot) in
+        let inRef = FIRDatabase.database().reference().child("menu").child("drinks")
+        inRef.observe(FIRDataEventType.value, with: { (snapshot) in
             
  
-            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: nodeLocation.coffee.rawValue), forKey: nodeLocation.coffee.rawValue)
-            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: nodeLocation.softDrink.rawValue), forKey: nodeLocation.softDrink.rawValue)
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: nodeLocation.coffee.rawValue)), forKey: nodeLocation.coffee.rawValue)
+            
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: nodeLocation.softDrink.rawValue)), forKey: nodeLocation.softDrink.rawValue)
+            
             self.DrinksArr = self.drinkData[nodeLocation.coffee.rawValue]!
             
             })
@@ -95,9 +152,11 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         if sender.selectedSegmentIndex == 1 {
             self.DrinksArr = drinkData[nodeLocation.softDrink.rawValue]!
             self.nodeKey = nodeLocation.softDrink.rawValue
+            ref = FIRDatabase.database().reference().child("menu").child("drinks").child(nodeLocation.softDrink.rawValue)
         }else{
             self.DrinksArr = drinkData[nodeLocation.coffee.rawValue]!
             self.nodeKey = nodeLocation.coffee.rawValue
+             ref = FIRDatabase.database().reference().child("menu").child("drinks").child(nodeLocation.coffee.rawValue)
         }
         
     }

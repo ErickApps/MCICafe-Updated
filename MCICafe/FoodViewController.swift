@@ -13,7 +13,9 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     @IBOutlet var tableView: UITableView!
     var snapData: [String:[Menu]] = [:]
+    var ref: FIRDatabaseReference!
     
+    @IBOutlet weak var addbuttonItem: UIBarButtonItem!
     var foodArr: [Menu] = []{
         didSet{
             tableView.reloadData()
@@ -22,16 +24,22 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     var nodeKey: String = "breakfast"
     
+    @IBOutlet weak var tabControl: UISegmentedControl!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib
+       
+        ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.breakfast.rawValue)
+        self.addbuttonItem.isEnabled = false
+        self.addbuttonItem.tintColor = UIColor.clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
+        tableView.estimatedRowHeight = 120
+        self.automaticallyAdjustsScrollViewInsets = false
         
         getMenu()
         
@@ -57,6 +65,28 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if isLogIn() {
+            self.addbuttonItem.isEnabled = true
+            self.addbuttonItem.tintColor = UIColor.blue
+            tableView.allowsSelection = true
+        }
+        
+    }
+    @IBAction func editItemButton(_ sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        if tableView.isEditing {
+            self.navigationItem.leftBarButtonItem?.title = "Done"
+        } else {
+            self.navigationItem.leftBarButtonItem?.title = "Edit"
+        }
+        
+    }
+
+
 
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,43 +101,76 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let foodMenu = self.foodArr[(indexPath as NSIndexPath).row]
         
         cell.titleLabel.text = foodMenu.title
-        cell.descriptionLabel.text = foodMenu.description ?? ""
+        cell.descriptionLabel.text = foodMenu.description ?? "\n"
         cell.costLabel.text = "$\(foodMenu.cost)"
         
 
         
         return cell
     }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return NO if you do not want the item to be re-orderable.
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+    
+        
+    let postFrom = ["title": self.foodArr[fromIndexPath.row].title,
+    "description": self.foodArr[fromIndexPath.row].description,
+    "cost": self.foodArr[fromIndexPath.row].cost]
+    
+    
+    let postTo = ["title": self.foodArr[toIndexPath.row].title,
+    "description": self.foodArr[toIndexPath.row].description,
+    "cost": self.foodArr[toIndexPath.row].cost]
+    
+    
+    self.ref.updateChildValues([String(toIndexPath.row): postFrom])
+    self.ref.updateChildValues([String(fromIndexPath.row): postTo])
+    
+    
+    }
+
+
+
 
     @IBAction func tabBar(_ sender: UISegmentedControl) {
         
+      
         switch sender.selectedSegmentIndex {
         case 1: self.foodArr = self.snapData[nodeLocation.soupAndSalad.rawValue]!
-            self.nodeKey = nodeLocation.soupAndSalad.rawValue
+        self.nodeKey = nodeLocation.soupAndSalad.rawValue
+        ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.soupAndSalad.rawValue)
+            
         case 2: self.foodArr = self.snapData[nodeLocation.sandwich.rawValue]!
-            self.nodeKey = nodeLocation.sandwich.rawValue
-    
+        self.nodeKey = nodeLocation.sandwich.rawValue
+        ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.sandwich.rawValue)
+            
         default:
             self.foodArr = self.snapData[nodeLocation.breakfast.rawValue]!
             self.nodeKey = nodeLocation.breakfast.rawValue
+            ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.breakfast.rawValue)
         }
- 
         
     }
     
     func getMenu(){
         
-        var ref: FIRDatabaseReference!
-        
-        ref = FIRDatabase.database().reference()
-        
-        ref.child("menu").child("food").observe(FIRDataEventType.value, with: { (snapshot) in
+        let inRef = FIRDatabase.database().reference().child("menu").child("food")
+        inRef.observe(FIRDataEventType.value, with: { (snapshot) in
             
-            
-            
-            self.snapData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "breakfast"), forKey: "breakfast")
-            self.snapData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "soupAndSalad"), forKey: "soupAndSalad")
-            self.snapData.updateValue(unWrapMenu(snapshot: snapshot, nodeKey: "sandwich"), forKey: "sandwich")
+            self.snapData.updateValue(unWrapMenu(snapshot:snapshot.childSnapshot(forPath: "breakfast")),forKey: "breakfast")
+            self.snapData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: "soupAndSalad")),forKey: "soupAndSalad")
+            self.snapData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: "sandwich")), forKey: "sandwich")
             self.foodArr = self.snapData["breakfast"]!
             
             })
@@ -116,6 +179,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
 
     }
+    
     
 }
 
