@@ -13,7 +13,9 @@ import Firebase
 class ViewController: JSQMessagesViewController {
 
     var messages = [JSQMessage]()
+    let image = #imageLiteral(resourceName: "MCI_Logo_Only")
     
+    let AvatarMCI = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "MCI_Logo_Only"), diameter: 500)
     
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
@@ -24,37 +26,13 @@ class ViewController: JSQMessagesViewController {
     // *** STEP 1: STORE FIREBASE REFERENCES
     var messagesRef: FIRDatabaseReference!
     
-    func setupFirebase() {
-        // *** STEP 2: SETUP FIREBASE
-       // let uid = FIRAuth.auth()?.currentUser?.uid
-        messagesRef = FIRDatabase.database().reference().child("msg")
-        
-        // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
-        messagesRef.queryLimited(toLast: 25).observe(FIRDataEventType.childAdded, with: { (snapshot) in
-            
-            let value = snapshot.value as? NSDictionary
-            let text = value?["text"] as? String
-            
-            
-            let message = JSQMessage(senderId: "MCI", displayName: "displayName", text: text!)
-            
-            self.messages.append(message!)
-            self.finishReceivingMessage()
-        })
-    }
-    func saveNotificatioFirebase(text: String) {
-        // *** STEP 3: ADD A MESSAGE TO FIREBASE
-
-        messagesRef.childByAutoId().setValue(["text":text])
-    }
-
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup navigation
-        setupBackButton()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.inputToolbar.contentView.leftBarButtonItem.isHidden = true
         self.senderId = "Me"
         self.senderDisplayName = "displayseder"
         
@@ -64,7 +42,7 @@ class ViewController: JSQMessagesViewController {
         
     
         // no avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+       // collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         
@@ -75,6 +53,7 @@ class ViewController: JSQMessagesViewController {
         self.collectionView?.reloadData()
         self.collectionView?.layoutIfNeeded()
         setupFirebase()
+        setupBackButton()
     }
     
     
@@ -94,7 +73,7 @@ class ViewController: JSQMessagesViewController {
              *  2. Add new id<JSQMessageData> object to your data source
              *  3. Call `finishSendingMessage`
              */
-            
+            JSQSystemSoundPlayer.jsq_playMessageSentSound()
             
            // let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
             sendNotification(text: text)
@@ -123,7 +102,7 @@ class ViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
+        return AvatarMCI
     }
     
      
@@ -181,17 +160,54 @@ class ViewController: JSQMessagesViewController {
         let postParams: [String : Any] = ["to": "/topics/notification","priority": "high", "content_available": true,"time_to_live" : 5, "notification": ["body": msgText]]
         
         
-        do
-        {
-            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
-        }
-        catch
-        {
-            print("Caught an error: \(error)")
-        }
+        DispatchQueue.main.async(){
+            
+            do
+            {
+                request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
+            }
+            catch
+            {
+                print("Caught an error: \(error)")
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                
+                
+            }
+            
+            task.resume()
+   }
+  }
+    
+    func setupFirebase() {
+        // *** STEP 2: SETUP FIREBASE
+        // let uid = FIRAuth.auth()?.currentUser?.uid
+        //JSQSystemSoundPlayer.jsq_playMessageReceivedAlert()
+        messagesRef = FIRDatabase.database().reference().child("msg")
         
-        
+        // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
+        messagesRef.queryLimited(toLast: 25).observe(FIRDataEventType.childAdded, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            let text = value?["text"] as? String
+            
+            
+            let message = JSQMessage(senderId: "MCI", displayName: "displayName", text: text!)
+            
+            self.messages.append(message!)
+            self.finishReceivingMessage()
+        })
     }
+    func saveNotificatioFirebase(text: String) {
+        // *** STEP 3: ADD A MESSAGE TO FIREBASE
+        
+        messagesRef.childByAutoId().setValue(["text":text])
+    }
+    
 
+    
+    
+    
 }
-
