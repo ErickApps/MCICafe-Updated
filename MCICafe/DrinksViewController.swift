@@ -63,6 +63,7 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
             self.addbuttonItem.isEnabled = true
             self.addbuttonItem.tintColor = UIColor.blue
             tableView.allowsSelection = true
+            self.navigationController?.isNavigationBarHidden = false
         }
         
     }

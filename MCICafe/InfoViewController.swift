@@ -92,7 +92,7 @@ class InfoViewController: UIViewController {
         
                
         if isLogIn() {
-            let controller = storyboard?.instantiateViewController(withIdentifier: "notif") as! NotificationViewController
+            let controller = storyboard?.instantiateViewController(withIdentifier: "jsq") as! ViewController
             self.present(controller, animated: true, completion: nil)
         }else{
             let controller = storyboard?.instantiateViewController(withIdentifier: "logIn") as! ManagerLogInViewController

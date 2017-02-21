@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ///check if data persistence is working properly with sync
         
-        FIRDatabase.database().persistenceEnabled = true
+       // FIRDatabase.database().persistenceEnabled = true
         let menuRef = FIRDatabase.database().reference(withPath: "menu")
         menuRef.keepSynced(true)
         

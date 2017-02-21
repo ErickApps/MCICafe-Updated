@@ -22,14 +22,11 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     var endOfIndex: String?
     var segueId: String?
     
+    
     @IBOutlet weak var segmentModify: UISegmentedControl!
-
     @IBOutlet weak var titleTextField: UITextField!
-    
     @IBOutlet weak var costTextField: UITextField!
-    
     @IBOutlet weak var descriptionTextView: UITextView!
-    
     @IBOutlet weak var submitButton: UIButton!
     
     

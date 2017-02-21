@@ -23,14 +23,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AEI-xH-zWj">
-                                <rect key="frame" x="0.0" y="135" width="414" height="552"/>
+                                <rect key="frame" x="0.0" y="91" width="414" height="596"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellSpecial" rowHeight="110" id="JgU-Kz-6aZ" customClass="SpecialsCell" customModule="MCICafe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JgU-Kz-6aZ" id="qPx-Lf-Xdy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDH-Vr-ZzX">
@@ -80,7 +80,7 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MCI_Logo_Only" translatesAutoresizingMaskIntoConstraints="NO" id="qBJ-qN-gmg">
-                                <rect key="frame" x="0.0" y="64" width="414" height="71"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="71"/>
                                 <color key="backgroundColor" red="0.88953670976269161" green="0.94911830195315594" blue="0.91072808646054348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="fc4-fw-kz8"/>
@@ -137,7 +137,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNI-dn-hLU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                         <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MjB-Aw-Vww">
+                                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MjB-Aw-Vww">
                                                 <rect key="frame" x="8" y="82" width="398" height="29"/>
                                                 <segments>
                                                     <segment title="Edit"/>
@@ -360,14 +360,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-TL-sWy">
-                                <rect key="frame" x="0.0" y="172" width="414" height="515"/>
+                                <rect key="frame" x="0.0" y="121" width="414" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodCell" rowHeight="45" id="gD7-fZ-Dn9" customClass="FoodTableViewCell" customModule="MCICafe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gD7-fZ-Dn9" id="1UC-eE-2Lg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="zqw-XR-Itq">
@@ -416,38 +416,38 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MCI_Logo_Only" translatesAutoresizingMaskIntoConstraints="NO" id="MM8-UX-Ztn">
-                                <rect key="frame" x="0.0" y="64" width="414" height="71"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="65"/>
                                 <color key="backgroundColor" red="0.88953670979999999" green="0.94911830200000002" blue="0.91072808650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="71" id="CTS-be-nlM"/>
+                                    <constraint firstAttribute="height" constant="65" id="CTS-be-nlM"/>
                                 </constraints>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dal-hA-9fd">
-                                <rect key="frame" x="0.0" y="136" width="414" height="37"/>
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3lP-k2-RIe">
+                                <rect key="frame" x="0.0" y="85" width="414" height="29"/>
                                 <segments>
                                     <segment title="Breakfast"/>
                                     <segment title="Soup-Salads"/>
                                     <segment title="Sandwiches"/>
+                                    <segment title="dessert"/>
                                 </segments>
-                                <color key="tintColor" red="0.79502886530000005" green="0.7827144265" blue="0.14634945990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.1316494346" green="0.68366855380000002" blue="0.85918337109999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="tabBar:" destination="8rJ-Kc-sve" eventType="valueChanged" id="dQk-Xg-XtR"/>
+                                    <action selector="tabBar:" destination="8rJ-Kc-sve" eventType="valueChanged" id="DX1-r6-aVk"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MM8-UX-Ztn" secondAttribute="trailing" id="86d-W4-fGa"/>
+                            <constraint firstItem="3lP-k2-RIe" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="EjM-2n-V0U"/>
                             <constraint firstItem="BS3-TL-sWy" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="F89-DR-CAD"/>
-                            <constraint firstItem="dal-hA-9fd" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="GnC-dL-zcX"/>
-                            <constraint firstItem="dal-hA-9fd" firstAttribute="top" secondItem="MM8-UX-Ztn" secondAttribute="bottom" constant="1" id="Lz6-io-rVP"/>
-                            <constraint firstItem="BS3-TL-sWy" firstAttribute="top" secondItem="dal-hA-9fd" secondAttribute="bottom" id="Rju-58-yQW"/>
-                            <constraint firstItem="BS3-TL-sWy" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="61.5" id="SFN-51-sqJ"/>
+                            <constraint firstAttribute="trailing" secondItem="3lP-k2-RIe" secondAttribute="trailing" id="IFY-RY-Kr0"/>
+                            <constraint firstItem="3lP-k2-RIe" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="65" id="Z62-2D-rlo"/>
                             <constraint firstItem="MM8-UX-Ztn" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="bWf-Vv-KiB"/>
                             <constraint firstItem="MM8-UX-Ztn" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="enj-2d-XnQ"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="BS3-TL-sWy" secondAttribute="bottom" id="fbE-Ur-tGf"/>
+                            <constraint firstItem="BS3-TL-sWy" firstAttribute="top" secondItem="3lP-k2-RIe" secondAttribute="bottom" constant="8" id="lvH-FL-AKp"/>
                             <constraint firstAttribute="trailing" secondItem="BS3-TL-sWy" secondAttribute="trailing" id="qCF-fw-39O"/>
-                            <constraint firstAttribute="trailing" secondItem="dal-hA-9fd" secondAttribute="trailing" id="wiL-bK-vVi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Food Menu" id="Uhb-We-JNk">
@@ -464,13 +464,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addbuttonItem" destination="fbl-T1-bQc" id="GOR-PS-2rp"/>
-                        <outlet property="tabControl" destination="dal-hA-9fd" id="2c1-16-7AA"/>
+                        <outlet property="tabControl" destination="3lP-k2-RIe" id="OWg-0E-nEr"/>
                         <outlet property="tableView" destination="BS3-TL-sWy" id="QrM-VJ-36T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3043" y="171"/>
+            <point key="canvasLocation" x="3042.0289855072465" y="170.38043478260872"/>
         </scene>
         <!--Drink-->
         <scene sceneID="RLu-wi-Aag">
@@ -485,7 +485,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wg9-C6-ubH">
-                                <rect key="frame" x="0.0" y="142" width="414" height="545"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="589"/>
                                 <color key="backgroundColor" red="0.88953670979999999" green="0.94911830200000002" blue="0.91072808650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DrinksCell" textLabel="kqa-aP-NQy" detailTextLabel="DoY-gY-WNn" rowHeight="67" style="IBUITableViewCellStyleValue1" id="ph1-yz-c6t">
@@ -523,11 +523,11 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="249" image="MCI_Logo_Only" translatesAutoresizingMaskIntoConstraints="NO" id="cae-Cz-BC2">
-                                <rect key="frame" x="0.0" y="64" width="414" height="47"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="47"/>
                                 <color key="backgroundColor" red="0.88953670979999999" green="0.94911830200000002" blue="0.91072808650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qi7-0b-dce">
-                                <rect key="frame" x="0.0" y="112" width="414" height="29"/>
+                                <rect key="frame" x="0.0" y="68" width="414" height="29"/>
                                 <segments>
                                     <segment title="Cofee"/>
                                     <segment title="Bevareges"/>
@@ -706,21 +706,22 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-HE-Ctl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ULm-r3-PbV">
+                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ULm-r3-PbV">
                                                 <rect key="frame" x="0.0" y="84" width="414" height="602"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notiCell" rowHeight="65" id="tUs-hc-4l0" customClass="NotiTableViewCell" customModule="MCICafe" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notiCell" rowHeight="115" id="tUs-hc-4l0" customClass="NotiTableViewCell" customModule="MCICafe" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="115"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tUs-hc-4l0" id="3sL-Mc-0AE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-yF-pRS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="64"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menssage" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-yF-pRS">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="63"/>
                                                                     <color key="backgroundColor" red="0.081703253090381622" green="0.54419809579849243" blue="0.9797092080116272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -728,7 +729,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="gw6-yF-pRS" firstAttribute="leading" secondItem="3sL-Mc-0AE" secondAttribute="leading" id="5p9-Ah-sl4"/>
                                                                 <constraint firstItem="gw6-yF-pRS" firstAttribute="top" secondItem="3sL-Mc-0AE" secondAttribute="top" id="Dhz-l2-DhQ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="gw6-yF-pRS" secondAttribute="bottom" id="SBx-ff-pSq"/>
+                                                                <constraint firstAttribute="bottom" secondItem="gw6-yF-pRS" secondAttribute="bottom" constant="52" id="SBx-ff-pSq"/>
                                                                 <constraint firstAttribute="trailing" secondItem="gw6-yF-pRS" secondAttribute="trailing" constant="103" id="Tr2-dh-CSa"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
@@ -849,10 +850,28 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nlg-iC-oTQ">
+            <objects>
+                <viewController storyboardIdentifier="jsq" id="xTe-3L-qib" customClass="ViewController" customModule="MCICafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C4r-h9-t13"/>
+                        <viewControllerLayoutGuide type="bottom" id="KuY-NZ-yow"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4tt-6J-hML">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Qc-JA-xvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="228"/>
+        </scene>
         <!--Specials-->
         <scene sceneID="fje-lH-xzO">
             <objects>
-                <navigationController id="g30-GY-hXQ" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="g30-GY-hXQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Specials" image="Specials_Inactive" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tQC-T9-7Tm">
@@ -871,9 +890,10 @@
         <!--Food-->
         <scene sceneID="Xpp-Uz-acK">
             <objects>
-                <navigationController id="Vev-Ui-tnv" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="Vev-Ui-tnv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Food" image="Food_Inactive" id="cPa-gy-q4n"/>
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bm8-oI-52Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -890,7 +910,7 @@
         <!--Drinks-->
         <scene sceneID="clg-nG-oU4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lx3-Ek-UyH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="lx3-Ek-UyH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Drinks" image="Drinks_Inactive" id="qyg-JL-Ts3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZGt-TM-klw">

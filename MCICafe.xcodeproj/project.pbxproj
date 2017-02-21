@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		985AFF6F0351536052548775 /* Pods_MCICafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */; };
 		A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7180B4B1E12518F0025279D /* SpecialsCell.swift */; };
 		A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74262B21E0E3C870009B34A /* ModelMenu.swift */; };
 		A7712FA91E3C410E00F02847 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7712FA81E3C410E00F02847 /* NotificationViewController.swift */; };
@@ -17,6 +18,7 @@
 		A793523A1E0E362B00C36D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A79352391E0E362B00C36D82 /* Assets.xcassets */; };
 		A793523D1E0E362B00C36D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A793523B1E0E362B00C36D82 /* LaunchScreen.storyboard */; };
 		A79352451E0E37BE00C36D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */; };
+		A799B9F11E5A6E9000D4ACEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799B9F01E5A6E9000D4ACEF /* ViewController.swift */; };
 		A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72641E21827A008605CF /* DrinksViewController.swift */; };
 		A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72661E25BC07008605CF /* InfoViewController.swift */; };
 		A79B72691E25CD25008605CF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72681E25CD25008605CF /* Artwork.swift */; };
@@ -26,12 +28,11 @@
 		A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */; };
 		A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */; };
 		A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */; };
-		B6307B90C8D0A7F72D4C76CB /* Pods_MCICafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128937136E066EF1F1571E32 /* Pods_MCICafe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		128937136E066EF1F1571E32 /* Pods_MCICafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCICafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C7D760F5CF16DF24C7759D2 /* Pods-MCICafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.release.xcconfig"; sourceTree = "<group>"; };
+		0773D1188DD75E10B9D7533F /* Pods-MCICafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.release.xcconfig"; sourceTree = "<group>"; };
+		999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCICafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7180B4B1E12518F0025279D /* SpecialsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialsCell.swift; sourceTree = "<group>"; };
 		A74262B21E0E3C870009B34A /* ModelMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMenu.swift; sourceTree = "<group>"; };
 		A7712FA81E3C410E00F02847 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		A793523C1E0E362B00C36D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A793523E1E0E362B00C36D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A799B9F01E5A6E9000D4ACEF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A79B72641E21827A008605CF /* DrinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
 		A79B72661E25BC07008605CF /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A79B72681E25CD25008605CF /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
@@ -54,7 +56,7 @@
 		A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		A7DDCA371E260F4300B90839 /* MCICafe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MCICafe.entitlements; sourceTree = "<group>"; };
 		A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerLogInViewController.swift; sourceTree = "<group>"; };
-		CC57078106DA0182E40247F4 /* Pods-MCICafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.debug.xcconfig"; sourceTree = "<group>"; };
+		E8D41E3DFE009BFA4D2302E5 /* Pods-MCICafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,28 +64,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6307B90C8D0A7F72D4C76CB /* Pods_MCICafe.framework in Frameworks */,
+				985AFF6F0351536052548775 /* Pods_MCICafe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35C66EB5D38746F6FE8BB53E /* Frameworks */ = {
+		92CDE7D80522EDF4CCD73EEE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				128937136E066EF1F1571E32 /* Pods_MCICafe.framework */,
+				999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5570FCDEEF4F692014DA67AA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CC57078106DA0182E40247F4 /* Pods-MCICafe.debug.xcconfig */,
-				8C7D760F5CF16DF24C7759D2 /* Pods-MCICafe.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		A79352241E0E362B00C36D82 = {
@@ -91,8 +84,8 @@
 			children = (
 				A793522F1E0E362B00C36D82 /* MCICafe */,
 				A793522E1E0E362B00C36D82 /* Products */,
-				5570FCDEEF4F692014DA67AA /* Pods */,
-				35C66EB5D38746F6FE8BB53E /* Frameworks */,
+				CE64ED9A72CCD34F80FC04E2 /* Pods */,
+				92CDE7D80522EDF4CCD73EEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +113,7 @@
 				A79B72661E25BC07008605CF /* InfoViewController.swift */,
 				A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */,
 				A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */,
+				A799B9F01E5A6E9000D4ACEF /* ViewController.swift */,
 				A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */,
 				A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */,
 				A79B726A1E25D1CE008605CF /* OpenMap.swift */,
@@ -132,6 +126,15 @@
 			path = MCICafe;
 			sourceTree = "<group>";
 		};
+		CE64ED9A72CCD34F80FC04E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8D41E3DFE009BFA4D2302E5 /* Pods-MCICafe.debug.xcconfig */,
+				0773D1188DD75E10B9D7533F /* Pods-MCICafe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,12 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A79352411E0E362B00C36D82 /* Build configuration list for PBXNativeTarget "MCICafe" */;
 			buildPhases = (
-				4019796C39A9FF14397512D7 /* [CP] Check Pods Manifest.lock */,
+				6CC60E9DC06F2D28FE360A47 /* [CP] Check Pods Manifest.lock */,
 				A79352291E0E362B00C36D82 /* Sources */,
 				A793522A1E0E362B00C36D82 /* Frameworks */,
 				A793522B1E0E362B00C36D82 /* Resources */,
-				65CD6DC2BB52B9769347E192 /* [CP] Embed Pods Frameworks */,
-				B291582EA18F481D707A0FCA /* [CP] Copy Pods Resources */,
+				9460B29D327E768E90BFA2E0 /* [CP] Embed Pods Frameworks */,
+				D83E96E40309415BF9F1DA4C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,7 +216,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4019796C39A9FF14397512D7 /* [CP] Check Pods Manifest.lock */ = {
+		6CC60E9DC06F2D28FE360A47 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -228,7 +231,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		65CD6DC2BB52B9769347E192 /* [CP] Embed Pods Frameworks */ = {
+		9460B29D327E768E90BFA2E0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -243,7 +246,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B291582EA18F481D707A0FCA /* [CP] Copy Pods Resources */ = {
+		D83E96E40309415BF9F1DA4C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -279,6 +282,7 @@
 				A7712FA91E3C410E00F02847 /* NotificationViewController.swift in Sources */,
 				A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */,
 				A79B72691E25CD25008605CF /* Artwork.swift in Sources */,
+				A799B9F11E5A6E9000D4ACEF /* ViewController.swift in Sources */,
 				A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +312,7 @@
 		A793523F1E0E362B00C36D82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -348,7 +353,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -358,6 +363,7 @@
 		A79352401E0E362B00C36D82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -400,14 +406,15 @@
 		};
 		A79352421E0E362B00C36D82 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC57078106DA0182E40247F4 /* Pods-MCICafe.debug.xcconfig */;
+			baseConfigurationReference = E8D41E3DFE009BFA4D2302E5 /* Pods-MCICafe.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MCICafe/MCICafe.entitlements;
 				DEVELOPMENT_TEAM = 5365TKQKLN;
 				INFOPLIST_FILE = MCICafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ErickApps.MCICafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -416,14 +423,15 @@
 		};
 		A79352431E0E362B00C36D82 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C7D760F5CF16DF24C7759D2 /* Pods-MCICafe.release.xcconfig */;
+			baseConfigurationReference = 0773D1188DD75E10B9D7533F /* Pods-MCICafe.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MCICafe/MCICafe.entitlements;
 				DEVELOPMENT_TEAM = 5365TKQKLN;
 				INFOPLIST_FILE = MCICafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ErickApps.MCICafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

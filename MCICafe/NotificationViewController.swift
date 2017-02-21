@@ -16,7 +16,6 @@ class NotificationViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet weak var tableView: UITableView!
-    let userDMsg = UserDefaults.standard
     
     var msgArr: Array <String> = [] {
         didSet {
@@ -248,6 +247,8 @@ class NotificationViewController: UIViewController,UITextViewDelegate,UITableVie
         let noti = self.msgArr[indexPath.row]
         
         cell.notificationLabel.text = noti
+        
+        cell.transform.inverted()
         
         return cell
         
