@@ -93,9 +93,6 @@ class InfoViewController: UIViewController {
                
         if isLogIn() {
             
-            //let controller = storyboard?.instantiateViewController(withIdentifier: "jsq") as! ViewController
-            //self.present(controller, animated: true, completion: nil)
-            
             let chatView = ViewController()
             let chatNavigationController = UINavigationController(rootViewController: chatView)
             present(chatNavigationController, animated: true, completion: nil)
