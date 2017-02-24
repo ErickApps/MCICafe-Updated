@@ -22,18 +22,20 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         
     }
-    var nodeKey = nodeLocation.coffee.rawValue
+    var nodeKey = node.coffee.rawValue
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = FIRDatabase.database().reference().child("menu").child("drinks").child(nodeLocation.coffee.rawValue)
+        ref = FIRDatabase.database().reference().child("menu").child("drinks").child(node.coffee.rawValue)
         self.addbuttonItem.isEnabled = false
         self.addbuttonItem.tintColor = UIColor.clear
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
         self.automaticallyAdjustsScrollViewInsets = false
         getMenu()
         
@@ -70,12 +72,6 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func editItemButton(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
-        
-        if tableView.isEditing {
-            self.navigationItem.leftBarButtonItem?.title = "Done"
-        } else {
-            self.navigationItem.leftBarButtonItem?.title = "Edit"
-        }
         
     }
     
@@ -134,11 +130,11 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
         inRef.observe(FIRDataEventType.value, with: { (snapshot) in
             
  
-            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: nodeLocation.coffee.rawValue)), forKey: nodeLocation.coffee.rawValue)
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: node.coffee.rawValue)), forKey: node.coffee.rawValue)
             
-            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: nodeLocation.softDrink.rawValue)), forKey: nodeLocation.softDrink.rawValue)
+            self.drinkData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: node.softDrink.rawValue)), forKey: node.softDrink.rawValue)
             
-            self.DrinksArr = self.drinkData[nodeLocation.coffee.rawValue]!
+            self.DrinksArr = self.drinkData[node.coffee.rawValue]!
             
             })
         { (error) in
@@ -151,13 +147,13 @@ class DrinksViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBAction func drinksTab(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 1 {
-            self.DrinksArr = drinkData[nodeLocation.softDrink.rawValue]!
-            self.nodeKey = nodeLocation.softDrink.rawValue
-            ref = FIRDatabase.database().reference().child("menu").child("drinks").child(nodeLocation.softDrink.rawValue)
+            self.DrinksArr = drinkData[node.softDrink.rawValue]!
+            self.nodeKey = node.softDrink.rawValue
+            ref = FIRDatabase.database().reference().child("menu").child("drinks").child(node.softDrink.rawValue)
         }else{
-            self.DrinksArr = drinkData[nodeLocation.coffee.rawValue]!
-            self.nodeKey = nodeLocation.coffee.rawValue
-             ref = FIRDatabase.database().reference().child("menu").child("drinks").child(nodeLocation.coffee.rawValue)
+            self.DrinksArr = drinkData[node.coffee.rawValue]!
+            self.nodeKey = node.coffee.rawValue
+             ref = FIRDatabase.database().reference().child("menu").child("drinks").child(node.coffee.rawValue)
         }
         
     }

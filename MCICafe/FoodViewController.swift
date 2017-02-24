@@ -32,7 +32,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
        
-        ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.breakfast.rawValue)
+        ref = FIRDatabase.database().reference().child("menu").child("food").child(node.breakfast.rawValue)
         self.addbuttonItem.isEnabled = false
         self.addbuttonItem.tintColor = UIColor.clear
         tableView.delegate = self
@@ -78,12 +78,6 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     @IBAction func editItemButton(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
-        
-        if tableView.isEditing {
-            self.navigationItem.leftBarButtonItem?.title = "Done"
-        } else {
-            self.navigationItem.leftBarButtonItem?.title = "Edit"
-        }
         
     }
 
@@ -148,18 +142,18 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
       
         switch sender.selectedSegmentIndex {
-        case 1: self.foodArr = self.snapData[nodeLocation.soupAndSalad.rawValue]!
-        self.nodeKey = nodeLocation.soupAndSalad.rawValue
-        ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.soupAndSalad.rawValue)
+        case 1: self.foodArr = self.snapData[node.soupAndSalad.rawValue]!
+        self.nodeKey = node.soupAndSalad.rawValue
+        ref = FIRDatabase.database().reference().child("menu").child("food").child(node.soupAndSalad.rawValue)
             
-        case 2: self.foodArr = self.snapData[nodeLocation.sandwich.rawValue]!
-        self.nodeKey = nodeLocation.sandwich.rawValue
-        ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.sandwich.rawValue)
+        case 2: self.foodArr = self.snapData[node.sandwich.rawValue]!
+        self.nodeKey = node.sandwich.rawValue
+        ref = FIRDatabase.database().reference().child("menu").child("food").child(node.sandwich.rawValue)
             
         default:
-            self.foodArr = self.snapData[nodeLocation.breakfast.rawValue]!
-            self.nodeKey = nodeLocation.breakfast.rawValue
-            ref = FIRDatabase.database().reference().child("menu").child("food").child(nodeLocation.breakfast.rawValue)
+            self.foodArr = self.snapData[node.breakfast.rawValue]!
+            self.nodeKey = node.breakfast.rawValue
+            ref = FIRDatabase.database().reference().child("menu").child("food").child(node.breakfast.rawValue)
         }
         
     }

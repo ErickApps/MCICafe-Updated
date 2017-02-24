@@ -18,7 +18,7 @@ enum strValues: String{
     case description
     case cost
 }
-enum nodeLocation: String {
+enum node: String {
     case specials
     case breakfast
     case sandwich
@@ -41,11 +41,10 @@ struct Menu {
 
 func unWrapMenu(snapshot: FIRDataSnapshot) -> [Menu] {
     
-       // var itemsArr: NSArray = []
+    
         var menuItems: [Menu] = []
         let itemsArr = snapshot.value as! NSArray
     
-        //itemsArr = menuDic.object(forKey: nodeKey) as! NSArray
     
     
         for item in itemsArr  {
@@ -77,18 +76,18 @@ func getChildLocation(nodeKey: String) -> FIRDatabaseReference {
     var childLocation = ref.child("menu")
     
     switch nodeKey {
-    case nodeLocation.coffee.rawValue:
-        childLocation = ref.child("menu").child("drinks").child(nodeLocation.coffee.rawValue)
-    case nodeLocation.softDrink.rawValue:
-        childLocation = ref.child("menu").child("drinks").child(nodeLocation.softDrink.rawValue)
-    case nodeLocation.breakfast.rawValue:
-        childLocation = ref.child("menu").child("food").child(nodeLocation.breakfast.rawValue)
-    case nodeLocation.sandwich.rawValue:
-        childLocation = ref.child("menu").child("food").child(nodeLocation.sandwich.rawValue)
-    case nodeLocation.soupAndSalad.rawValue:
-        childLocation = ref.child("menu").child("food").child(nodeLocation.soupAndSalad.rawValue)
-    case nodeLocation.specials.rawValue:
-        childLocation = ref.child("menu").child(nodeLocation.specials.rawValue)
+    case node.coffee.rawValue:
+        childLocation = ref.child("menu").child("drinks").child(node.coffee.rawValue)
+    case node.softDrink.rawValue:
+        childLocation = ref.child("menu").child("drinks").child(node.softDrink.rawValue)
+    case node.breakfast.rawValue:
+        childLocation = ref.child("menu").child("food").child(node.breakfast.rawValue)
+    case node.sandwich.rawValue:
+        childLocation = ref.child("menu").child("food").child(node.sandwich.rawValue)
+    case node.soupAndSalad.rawValue:
+        childLocation = ref.child("menu").child("food").child(node.soupAndSalad.rawValue)
+    case node.specials.rawValue:
+        childLocation = ref.child("menu").child(node.specials.rawValue)
     default:
         break
     }
@@ -97,25 +96,6 @@ func getChildLocation(nodeKey: String) -> FIRDatabaseReference {
     
 }
 
-//func displayAlert()  {
-//   
-//    
-//    let alertController = UIAlertController(title: "Destructive", message: "Simple alertView demo with Destructive and comfirm.", preferredStyle: UIAlertControllerStyle.alert)
-//    let DestructiveAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel) {
-//        (result : UIAlertAction) -> Void in
-//        print("Destructive")
-//    }
-//    
-//    
-//    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-//        (result : UIAlertAction) -> Void in
-//        
-//    }
-//    
-//    alertController.addAction(DestructiveAction)
-//    alertController.addAction(okAction)
-//    //self.presentViewController(alertController, animated: true, completion: nil)
-//}
 
 func isLogIn() -> Bool {
     if FIRAuth.auth()?.currentUser != nil {

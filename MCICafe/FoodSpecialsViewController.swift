@@ -57,12 +57,6 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
     @IBAction func editItemButton(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
         
-        if tableView.isEditing {
-            self.navigationItem.leftBarButtonItem?.title = "Done"
-        } else {
-            self.navigationItem.leftBarButtonItem?.title = "Edit"
-        }
-
     }
     
     override func didReceiveMemoryWarning() {

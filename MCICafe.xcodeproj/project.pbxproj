@@ -10,22 +10,19 @@
 		985AFF6F0351536052548775 /* Pods_MCICafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */; };
 		A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7180B4B1E12518F0025279D /* SpecialsCell.swift */; };
 		A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74262B21E0E3C870009B34A /* ModelMenu.swift */; };
-		A7712FA91E3C410E00F02847 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7712FA81E3C410E00F02847 /* NotificationViewController.swift */; };
 		A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79352301E0E362B00C36D82 /* AppDelegate.swift */; };
 		A79352331E0E362B00C36D82 /* FoodSpecialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */; };
 		A79352351E0E362B00C36D82 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79352341E0E362B00C36D82 /* FoodViewController.swift */; };
 		A79352381E0E362B00C36D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A79352361E0E362B00C36D82 /* Main.storyboard */; };
-		A793523A1E0E362B00C36D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A79352391E0E362B00C36D82 /* Assets.xcassets */; };
 		A793523D1E0E362B00C36D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A793523B1E0E362B00C36D82 /* LaunchScreen.storyboard */; };
 		A79352451E0E37BE00C36D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */; };
-		A799B9F11E5A6E9000D4ACEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799B9F01E5A6E9000D4ACEF /* ViewController.swift */; };
+		A799B9F11E5A6E9000D4ACEF /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799B9F01E5A6E9000D4ACEF /* NotificationViewController.swift */; };
 		A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72641E21827A008605CF /* DrinksViewController.swift */; };
 		A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72661E25BC07008605CF /* InfoViewController.swift */; };
 		A79B72691E25CD25008605CF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72681E25CD25008605CF /* Artwork.swift */; };
 		A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B726A1E25D1CE008605CF /* OpenMap.swift */; };
-		A79C38201E4FBBF000DD2966 /* NotiTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */; };
-		A79C38221E4FBD4D00DD2966 /* NotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */; };
 		A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */; };
+		A7C6C4041E5FA42E00D95E04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */; };
 		A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */; };
 		A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */; };
 /* End PBXBuildFile section */
@@ -35,24 +32,21 @@
 		999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCICafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7180B4B1E12518F0025279D /* SpecialsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialsCell.swift; sourceTree = "<group>"; };
 		A74262B21E0E3C870009B34A /* ModelMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMenu.swift; sourceTree = "<group>"; };
-		A7712FA81E3C410E00F02847 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A793522D1E0E362B00C36D82 /* MCICafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCICafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79352301E0E362B00C36D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSpecialsViewController.swift; sourceTree = "<group>"; };
 		A79352341E0E362B00C36D82 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		A79352371E0E362B00C36D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A79352391E0E362B00C36D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A793523C1E0E362B00C36D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A793523E1E0E362B00C36D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A799B9F01E5A6E9000D4ACEF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A799B9F01E5A6E9000D4ACEF /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A79B72641E21827A008605CF /* DrinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
 		A79B72661E25BC07008605CF /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A79B72681E25CD25008605CF /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		A79B726A1E25D1CE008605CF /* OpenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMap.swift; sourceTree = "<group>"; };
-		A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTextViewController.swift; sourceTree = "<group>"; };
-		A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTableViewCell.swift; sourceTree = "<group>"; };
 		A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		A7DDCA371E260F4300B90839 /* MCICafe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MCICafe.entitlements; sourceTree = "<group>"; };
 		A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerLogInViewController.swift; sourceTree = "<group>"; };
@@ -108,18 +102,15 @@
 				A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */,
 				A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */,
 				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
-				A7712FA81E3C410E00F02847 /* NotificationViewController.swift */,
 				A79B72641E21827A008605CF /* DrinksViewController.swift */,
 				A79B72661E25BC07008605CF /* InfoViewController.swift */,
 				A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */,
+				A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */,
 				A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */,
-				A799B9F01E5A6E9000D4ACEF /* ViewController.swift */,
-				A79C381F1E4FBBF000DD2966 /* NotiTextViewController.swift */,
-				A79C38211E4FBD4D00DD2966 /* NotiTableViewCell.swift */,
+				A799B9F01E5A6E9000D4ACEF /* NotificationViewController.swift */,
 				A79B726A1E25D1CE008605CF /* OpenMap.swift */,
 				A79B72681E25CD25008605CF /* Artwork.swift */,
 				A79352361E0E362B00C36D82 /* Main.storyboard */,
-				A79352391E0E362B00C36D82 /* Assets.xcassets */,
 				A793523B1E0E362B00C36D82 /* LaunchScreen.storyboard */,
 				A793523E1E0E362B00C36D82 /* Info.plist */,
 			);
@@ -208,7 +199,7 @@
 			files = (
 				A793523D1E0E362B00C36D82 /* LaunchScreen.storyboard in Resources */,
 				A79352451E0E37BE00C36D82 /* GoogleService-Info.plist in Resources */,
-				A793523A1E0E362B00C36D82 /* Assets.xcassets in Resources */,
+				A7C6C4041E5FA42E00D95E04 /* Assets.xcassets in Resources */,
 				A79352381E0E362B00C36D82 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,20 +260,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */,
-				A79C38221E4FBD4D00DD2966 /* NotiTableViewCell.swift in Sources */,
 				A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */,
 				A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */,
-				A79C38201E4FBBF000DD2966 /* NotiTextViewController.swift in Sources */,
 				A79352351E0E362B00C36D82 /* FoodViewController.swift in Sources */,
 				A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */,
 				A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */,
 				A79352331E0E362B00C36D82 /* FoodSpecialsViewController.swift in Sources */,
 				A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */,
 				A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */,
-				A7712FA91E3C410E00F02847 /* NotificationViewController.swift in Sources */,
 				A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */,
 				A79B72691E25CD25008605CF /* Artwork.swift in Sources */,
-				A799B9F11E5A6E9000D4ACEF /* ViewController.swift in Sources */,
+				A799B9F11E5A6E9000D4ACEF /* NotificationViewController.swift in Sources */,
 				A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

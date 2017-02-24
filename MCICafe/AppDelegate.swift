@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ///check if data persistence is working properly with sync
         
-       // FIRDatabase.database().persistenceEnabled = true
+        FIRDatabase.database().persistenceEnabled = true
         let menuRef = FIRDatabase.database().reference(withPath: "menu")
         menuRef.keepSynced(true)
         
@@ -70,18 +70,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // If you are receiving a notification message while your app is in the background,
-        // this callback will not be fired till the user taps on the notification launching the application.
-        // TODO: Handle data of notification
         
         
            }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // If you are receiving a notification message while your app is in the background,
-        // this callback will not be fired till the user taps on the notification launching the application.
-        // TODO: Handle data of notification
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -173,7 +167,6 @@ extension AppDelegate : FIRMessagingDelegate {
         
         
         
-        //NotificationCenter.default.post(name: .FIRMessagingSendSuccess, object: nil, userInfo: remoteMessage.appData)
     }
 }
 // [END ios_10_data_message_handling]

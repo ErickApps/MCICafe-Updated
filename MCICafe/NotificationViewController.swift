@@ -1,289 +1,213 @@
 //
-//  NotificationViewController.swift
+//  ViewController.swift
 //  MCICafe
 //
-//  Created by Erick Barbosa on 1/27/17.
+//  Created by Erick Barbosa on 2/19/17.
 //  Copyright © 2017 Erick Barbosa. All rights reserved.
 //
 
 import UIKit
+import JSQMessagesViewController
 import Firebase
 
-
-class NotificationViewController: UIViewController,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate {
-
-    @IBOutlet weak var msgTexField: UITextView!
-    @IBOutlet var scrollView: UIScrollView!
+class ViewController: JSQMessagesViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    var messages = [JSQMessage]()
+    let image = #imageLiteral(resourceName: "MCI_Logo_Only")
     
-    var msgArr: Array <String> = [] {
-        didSet {
-            tableView.reloadData()
-            
-        }
-    }
+    let AvatarMCI = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "MCI_Logo_Only"), diameter: 100)
+    
+    var incomingBubble: JSQMessagesBubbleImage!
+    var outgoingBubble: JSQMessagesBubbleImage!
+    fileprivate var displayName: String!
+    
+    
+    
+    // *** STEP 1: STORE FIREBASE REFERENCES
+    var messagesRef: FIRDatabaseReference!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
-        notiMsgFireBase()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.inputToolbar.contentView.leftBarButtonItem.isHidden = true
+        self.senderId = "Me"
+        self.senderDisplayName = "displayseder"
         
-        msgTexField.delegate = self
-        msgTexField.layer.borderColor = #colorLiteral(red: 0.7950288653, green: 0.7827144265, blue: 0.1463494599, alpha: 1).cgColor
-        msgTexField.layer.borderWidth = 1.0
-        msgTexField.layer.cornerRadius = 5.0
-        
-       
+        // Bubbles with tails
+        incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
         
         
+        // no avatars
+        // collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-        registerForKeyboardNotifications()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
-        view.addGestureRecognizer(tap)
         
         
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func registerForKeyboardNotifications(){
-        //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    @IBAction func exitDoneButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        
+        automaticallyScrollsToMostRecentMessage = true
+        
+        self.collectionView?.reloadData()
+        self.collectionView?.layoutIfNeeded()
+        setupFirebase()
+        setupBackButton()
     }
     
     
+    func setupBackButton() {
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    func backButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
     
-//    func deregisterFromKeyboardNotifications(){
-//        //Removing notifies on keyboard appearing
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//    }
+    override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
+        /**
+         *  Sending a message. Your implementation of this method should do *at least* the following:
+         *
+         *  1. Play sound (optional)
+         *  2. Add new id<JSQMessageData> object to your data source
+         *  3. Call `finishSendingMessage`
+         */
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        
+        // let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
+        sendNotification(text: text)
+        saveNotificatioFirebase(text: text)
+        //self.messages.append(message!)
+        self.finishSendingMessage(animated: true)
+    }
     
-    func keyboardWasShown(notification: NSNotification){
-        //Need to calculate keyboard exact size due to Apple suggestions
-        self.scrollView.isScrollEnabled = true
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+    
+    
+    //MARK: JSQMessages CollectionView DataSource
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, messageDataForItemAt indexPath: IndexPath) -> JSQMessageData {
+        return messages[indexPath.item]
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, messageBubbleImageDataForItemAt indexPath: IndexPath) -> JSQMessageBubbleImageDataSource {
         
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.scrollView.isScrollEnabled = false
+        return messages[indexPath.item].senderId == senderId ? outgoingBubble : incomingBubble
         
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= keyboardSize!.height
-        if let msgTexField = self.msgTexField {
-            if (!aRect.contains(msgTexField.frame.origin)){
-                self.scrollView.scrollRectToVisible(msgTexField.frame, animated: true)
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return AvatarMCI
+    }
+    
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForCellTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
+        /**
+         *  This logic should be consistent with what you return from `heightForCellTopLabelAtIndexPath:`
+         *  The other label text delegate methods should follow a similar pattern.
+         *
+         *  Show a timestamp for every 3rd message
+         */
+        if (indexPath.item % 3 == 0) {
+            let message = self.messages[indexPath.item]
+            
+            return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+        }
+        
+        return nil
+    }
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAt indexPath: IndexPath) -> CGFloat {
+        /**
+         *  Each label in a cell has a `height` delegate method that corresponds to its text dataSource method
+         */
+        
+        /**
+         *  This logic should be consistent with what you return from `attributedTextForCellTopLabelAtIndexPath:`
+         *  The other label height delegate methods should follow similarly
+         *
+         *  Show a timestamp for every 3rd message
+         */
+        if indexPath.item % 3 == 0 {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+        
+        return 0.0
+    }
+    
+    
+    
+    
+    
+    func sendNotification(text: String){
+        
+        let msgText = text
+        
+        var request = URLRequest(url: URL(string: "https://fcm.googleapis.com/fcm/send")!)
+        
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("key=AAAAL644vRY:APA91bGsDOi2kNyK5pnRjkvBVOK47-UhllnHIk3_33PP4O0C0os2ur1YpY4l-KPuRGl1f-GoBgkh_8q3Xk4Ttdc_sdNl5UHC-VxMyY7BxTJuzu0hb65rSyjbGvWuAR2GW_JxF9X9r0qmHZD2UR7SYSt6YFrys3lSvw", forHTTPHeaderField: "Authorization")
+        
+        
+        let postParams: [String : Any] = ["to": "/topics/notification","priority": "high", "content_available": true,"time_to_live" : 5, "notification": ["body": msgText]]
+        
+        
+        DispatchQueue.main.async(){
+            
+            do
+            {
+                request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
             }
+            catch
+            {
+                print("Caught an error: \(error)")
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                
+                
+            }
+            
+            task.resume()
         }
     }
     
-    func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = false
-    }
-    
-//    func textViewDidBeginEditing(_ textField: UITextField){
-//        msgTexField = textField
-//        
-//    }
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        msgTexField = textView
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView){
-        msgTexField.text = nil
-    }
-    
-    func keyboardDismiss() {
-        msgTexField.resignFirstResponder()
+    func setupFirebase() {
+        // *** STEP 2: SETUP FIREBASE
+        // let uid = FIRAuth.auth()?.currentUser?.uid
+        //JSQSystemSoundPlayer.jsq_playMessageReceivedAlert()
+        messagesRef = FIRDatabase.database().reference().child("msg")
         
-    }
-    
-    
-    //Dismiss keyboard using Return Key (Done) Button
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        keyboardDismiss()
-        
-        return true
-    }
-    func displayAlert(title: String, message: String) {
-        
-        
-        let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            //self.dismiss(animated: true, completion: nil)
-        }))
-        
-        
-        present(refreshAlert, animated: true, completion: nil)
-        
-    }
-
-    
-    @IBAction func sendButton(_ sender: UIButton) {
-        
-        if msgTexField.text == "" {
-            displayAlert(title: "empty", message: "cannot send empty message")
-            return
-        }else {
+        // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
+        messagesRef.queryLimited(toLast: 25).observe(FIRDataEventType.childAdded, with: { (snapshot) in
             
-            let msgText = msgTexField.text!
-            
-            var request = URLRequest(url: URL(string: "https://fcm.googleapis.com/fcm/send")!)
-            
-            request.httpMethod = "POST"
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.setValue("key=AAAAL644vRY:APA91bGsDOi2kNyK5pnRjkvBVOK47-UhllnHIk3_33PP4O0C0os2ur1YpY4l-KPuRGl1f-GoBgkh_8q3Xk4Ttdc_sdNl5UHC-VxMyY7BxTJuzu0hb65rSyjbGvWuAR2GW_JxF9X9r0qmHZD2UR7SYSt6YFrys3lSvw", forHTTPHeaderField: "Authorization")
+            let value = snapshot.value as? NSDictionary
+            let text = value?["text"] as? String
             
             
-            let postParams: [String : Any] = ["to": "/topics/notification","priority": "high", "content_available": true,"time_to_live" : 5, "notification": ["body": msgText]]
+            let message = JSQMessage(senderId: "MCI", displayName: "displayName", text: text!)
             
-            let date = Date()
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.year, .month, .day, .hour,.minute], from: date)
-            let toDay = "\(components.year!)-\(components.month!)-\(components.day!)/\(components.hour!):\(components.minute!)"
-           
-           
-        
-            
-            DispatchQueue.main.async(){
-                
-                do
-                {
-                    request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
-                }
-                catch
-                {
-                    print("Caught an error: \(error)")
-                }
-                
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                    
-                    if let realResponse = response as? HTTPURLResponse
-                    {
-                        if realResponse.statusCode != 200
-                        {
-                            print("Not a 200 response")
-                        }else {
-                            
-                            
-                            
-                            let ref = FIRDatabase.database().reference().child("notification")
-                            
-                            
-                            ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                                
-                                let post = ["message": msgText]
-                                ref.updateChildValues([toDay:post])
-                                
-                                
-                            })
-                            
-                            
-                            
-                        }
-                    }
-                    
-                    
-                }
-                
-                task.resume()
-                
-            }
-
-            
-            
-        }
-
-        
-        
-        
-        
-        
-        keyboardDismiss()
-        
-        msgTexField.text = nil
-
-        
-
-    }
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return msgArr.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "notiCell", for: indexPath) as! NotiTableViewCell
-        
-       
-        
-    
-        let noti = self.msgArr[indexPath.row]
-        
-        cell.notificationLabel.text = noti
-        
-        cell.transform.inverted()
-        
-        return cell
-        
-    }
-    
-    func notiMsgFireBase()  {
-        var ref: FIRDatabaseReference!
-       
-        
-        ref = FIRDatabase.database().reference().child("notification")
-        
-        ref.observe(FIRDataEventType.value, with: { (snapshot) in
-            
-            let noti = snapshot.value as! [String:AnyObject]
-             var tempMsg: Array<String> = []
-            for datekey in noti.keys{
-                print(noti[datekey]!.allKeys!)
-                
-                for key in noti[datekey]!.allKeys!{
-                    let msg = noti[datekey]?[key] as! NSDictionary
-                    
-                    tempMsg.append(msg["message"]! as! String)
-                    print(msg["message"]!)
-                }
-            }
-            self.msgArr = tempMsg
-            tempMsg = []
-            print(tempMsg)
+            self.messages.append(message!)
+            self.finishReceivingMessage()
         })
-
     }
-
+    func saveNotificatioFirebase(text: String) {
+        // *** STEP 3: ADD A MESSAGE TO FIREBASE
+        
+        messagesRef.childByAutoId().setValue(["text":text])
+    }
+    
+    
     
     
     
 }
-
-    

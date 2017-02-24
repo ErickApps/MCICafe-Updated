@@ -44,8 +44,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             descriptionTextView.isHidden = true
         }
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotificationViewController.keyboardDismiss))
-        view.addGestureRecognizer(tap)
+      
        
     }
 
@@ -128,15 +127,6 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
     }
     
-    @IBAction func addButton(_ sender: UIButton) {
-        operation(operationType: "add")
-    }
-//    func hideLabel(bool: Bool) {
-//        costLabel.isHidden = bool
-//        descriptionLabel.isHidden = bool
-//        titleLabel.isHidden = bool
-//
-//    }
     func hideTextField(bool: Bool) {
         costTextField.isHidden = bool
         descriptionTextView.isHidden = bool
@@ -198,7 +188,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             default : break
             }
             
-            if self.nodeKey ==  nodeLocation.coffee.rawValue || self.nodeKey ==  nodeLocation.softDrink.rawValue{
+            if self.nodeKey ==  node.coffee.rawValue || self.nodeKey ==  node.softDrink.rawValue{
                 if let title = self.titleTextField.text,
                     let cost = self.costTextField.text
                 {
