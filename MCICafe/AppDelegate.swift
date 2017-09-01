@@ -15,11 +15,11 @@ import FirebaseInstanceID
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     
-       
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -63,16 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
         
-                 
+        
         
         return true
     }
-        
+    
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         
         
-           }
+    }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -165,13 +165,11 @@ extension AppDelegate : FIRMessagingDelegate {
     // Receive data message on iOS 10 devices while app is in the foreground.
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
         
-        
-        
     }
 }
 // [END ios_10_data_message_handling]
-    
-    
+
+
 
 
 

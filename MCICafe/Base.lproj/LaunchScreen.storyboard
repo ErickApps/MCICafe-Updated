@@ -18,38 +18,39 @@
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="250" image="MCI_Logo_Only" translatesAutoresizingMaskIntoConstraints="NO" id="36m-fp-hva">
-                                <rect key="frame" x="20" y="69.666666666666686" width="374" height="666.33333333333326"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miami Culinary Institute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-2F-7n9">
-                                <rect key="frame" x="20" y="27.999999999999996" width="374" height="33.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="Miami Culinary Institute" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-2F-7n9">
+                                <rect key="frame" x="20" y="20" width="374" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="240" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-Jp-waL">
+                                <rect key="frame" x="44" y="139" width="326" height="458"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="36m-fp-hva" firstAttribute="top" secondItem="3d2-2F-7n9" secondAttribute="bottom" constant="8" id="86F-0w-X7g"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="36m-fp-hva" secondAttribute="bottom" id="KF4-M4-hey"/>
-                            <constraint firstItem="3d2-2F-7n9" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="atW-m8-EtV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="36m-fp-hva" secondAttribute="trailing" id="iet-Rd-G8n"/>
-                            <constraint firstItem="36m-fp-hva" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="pOy-Nj-AiW"/>
-                            <constraint firstItem="3d2-2F-7n9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="xTi-xB-NCc"/>
-                            <constraint firstItem="3d2-2F-7n9" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="zKJ-N7-Yja"/>
+                            <constraint firstItem="m7a-Jp-waL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0Jh-ny-gwB"/>
+                            <constraint firstItem="m7a-Jp-waL" firstAttribute="top" secondItem="3d2-2F-7n9" secondAttribute="bottom" constant="86" id="3TN-Iw-CJK"/>
+                            <constraint firstItem="3d2-2F-7n9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="CLD-In-Pjy"/>
+                            <constraint firstItem="m7a-Jp-waL" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="24" id="G4u-FO-dGK"/>
+                            <constraint firstItem="3d2-2F-7n9" firstAttribute="centerX" secondItem="m7a-Jp-waL" secondAttribute="centerX" id="ZUm-gS-BAq"/>
+                            <constraint firstItem="3d2-2F-7n9" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="bmU-0E-kYl"/>
+                            <constraint firstItem="3d2-2F-7n9" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="jvl-UA-M4K"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="m7a-Jp-waL" secondAttribute="bottom" constant="139" id="knT-UX-afX"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="48.75" y="372.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="MCI_Logo_Only" width="256" height="256"/>
+        <image name="logo" width="368" height="467"/>
     </resources>
 </document>

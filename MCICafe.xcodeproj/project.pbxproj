@@ -21,6 +21,8 @@
 		A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72661E25BC07008605CF /* InfoViewController.swift */; };
 		A79B72691E25CD25008605CF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B72681E25CD25008605CF /* Artwork.swift */; };
 		A79B726B1E25D1CE008605CF /* OpenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B726A1E25D1CE008605CF /* OpenMap.swift */; };
+		A7B0E0BF1F5902D800341ED3 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0E0BE1F5902D800341ED3 /* NotificationExtension.swift */; };
+		A7B0E0C11F5904B200341ED3 /* EditViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0E0C01F5904B200341ED3 /* EditViewExtension.swift */; };
 		A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */; };
 		A7C6C4041E5FA42E00D95E04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */; };
 		A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */; };
@@ -32,7 +34,7 @@
 		999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCICafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7180B4B1E12518F0025279D /* SpecialsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialsCell.swift; sourceTree = "<group>"; };
 		A74262B21E0E3C870009B34A /* ModelMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMenu.swift; sourceTree = "<group>"; };
-		A793522D1E0E362B00C36D82 /* MCICafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCICafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A793522D1E0E362B00C36D82 /* MCI Café.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MCI Café.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79352301E0E362B00C36D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSpecialsViewController.swift; sourceTree = "<group>"; };
 		A79352341E0E362B00C36D82 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		A79B72661E25BC07008605CF /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A79B72681E25CD25008605CF /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		A79B726A1E25D1CE008605CF /* OpenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMap.swift; sourceTree = "<group>"; };
+		A7B0E0BE1F5902D800341ED3 /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		A7B0E0C01F5904B200341ED3 /* EditViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewExtension.swift; sourceTree = "<group>"; };
 		A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +77,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A76631151F58FDE000386284 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7180B4B1E12518F0025279D /* SpecialsCell.swift */,
+				A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A76631161F58FDF100386284 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
+				A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */,
+				A79B72641E21827A008605CF /* DrinksViewController.swift */,
+				A799B9F01E5A6E9000D4ACEF /* NotificationViewController.swift */,
+				A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */,
+				A79B72661E25BC07008605CF /* InfoViewController.swift */,
+				A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */,
+				A76631181F58FEE500386284 /* Extensions */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A76631171F58FDFE00386284 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A74262B21E0E3C870009B34A /* ModelMenu.swift */,
+				A79B72681E25CD25008605CF /* Artwork.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A76631181F58FEE500386284 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A79B726A1E25D1CE008605CF /* OpenMap.swift */,
+				A7B0E0BE1F5902D800341ED3 /* NotificationExtension.swift */,
+				A7B0E0C01F5904B200341ED3 /* EditViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A79352241E0E362B00C36D82 = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +133,7 @@
 		A793522E1E0E362B00C36D82 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A793522D1E0E362B00C36D82 /* MCICafe.app */,
+				A793522D1E0E362B00C36D82 /* MCI Café.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,19 +144,10 @@
 				A7DDCA371E260F4300B90839 /* MCICafe.entitlements */,
 				A79352441E0E37BE00C36D82 /* GoogleService-Info.plist */,
 				A79352301E0E362B00C36D82 /* AppDelegate.swift */,
-				A74262B21E0E3C870009B34A /* ModelMenu.swift */,
-				A7180B4B1E12518F0025279D /* SpecialsCell.swift */,
-				A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */,
-				A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */,
-				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
-				A79B72641E21827A008605CF /* DrinksViewController.swift */,
-				A79B72661E25BC07008605CF /* InfoViewController.swift */,
-				A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */,
+				A76631171F58FDFE00386284 /* Model */,
+				A76631151F58FDE000386284 /* View */,
+				A76631161F58FDF100386284 /* Controller */,
 				A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */,
-				A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */,
-				A799B9F01E5A6E9000D4ACEF /* NotificationViewController.swift */,
-				A79B726A1E25D1CE008605CF /* OpenMap.swift */,
-				A79B72681E25CD25008605CF /* Artwork.swift */,
 				A79352361E0E362B00C36D82 /* Main.storyboard */,
 				A793523B1E0E362B00C36D82 /* LaunchScreen.storyboard */,
 				A793523E1E0E362B00C36D82 /* Info.plist */,
@@ -129,9 +167,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A793522C1E0E362B00C36D82 /* MCICafe */ = {
+		A793522C1E0E362B00C36D82 /* MCI Café */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A79352411E0E362B00C36D82 /* Build configuration list for PBXNativeTarget "MCICafe" */;
+			buildConfigurationList = A79352411E0E362B00C36D82 /* Build configuration list for PBXNativeTarget "MCI Café" */;
 			buildPhases = (
 				6CC60E9DC06F2D28FE360A47 /* [CP] Check Pods Manifest.lock */,
 				A79352291E0E362B00C36D82 /* Sources */,
@@ -144,9 +182,9 @@
 			);
 			dependencies = (
 			);
-			name = MCICafe;
+			name = "MCI Café";
 			productName = MCICafe;
-			productReference = A793522D1E0E362B00C36D82 /* MCICafe.app */;
+			productReference = A793522D1E0E362B00C36D82 /* MCI Café.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +225,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A793522C1E0E362B00C36D82 /* MCICafe */,
+				A793522C1E0E362B00C36D82 /* MCI Café */,
 			);
 		};
 /* End PBXProject section */
@@ -263,11 +301,13 @@
 				A79B72651E21827A008605CF /* DrinksViewController.swift in Sources */,
 				A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */,
 				A79352351E0E362B00C36D82 /* FoodViewController.swift in Sources */,
+				A7B0E0C11F5904B200341ED3 /* EditViewExtension.swift in Sources */,
 				A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */,
 				A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */,
 				A79352331E0E362B00C36D82 /* FoodSpecialsViewController.swift in Sources */,
 				A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */,
 				A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */,
+				A7B0E0BF1F5902D800341ED3 /* NotificationExtension.swift in Sources */,
 				A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */,
 				A79B72691E25CD25008605CF /* Artwork.swift in Sources */,
 				A799B9F11E5A6E9000D4ACEF /* NotificationViewController.swift in Sources */,
@@ -341,7 +381,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -399,6 +439,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MCICafe/MCICafe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5365TKQKLN;
 				INFOPLIST_FILE = MCICafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -416,6 +457,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MCICafe/MCICafe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 5365TKQKLN;
 				INFOPLIST_FILE = MCICafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -438,7 +480,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A79352411E0E362B00C36D82 /* Build configuration list for PBXNativeTarget "MCICafe" */ = {
+		A79352411E0E362B00C36D82 /* Build configuration list for PBXNativeTarget "MCI Café" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A79352421E0E362B00C36D82 /* Debug */,
