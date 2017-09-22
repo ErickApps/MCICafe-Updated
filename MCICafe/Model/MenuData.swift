@@ -25,7 +25,7 @@ class  ParseData {
   var menuItems: [MenuData] = []
   
   func parseMenu(itemType: drinkOrFood,snapshot: FIRDataSnapshot) -> [MenuData] {
-    
+    print("")
     let itemsArr = snapshot.value as! NSArray
     
     for item in itemsArr  {
