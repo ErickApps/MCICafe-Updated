@@ -12,10 +12,9 @@ import Firebase
 class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
   
   
-  var snapData: [String:[Menu]] = [:]
+  var snapData: [String:[MenuData]] = [:]
   var ref: FIRDatabaseReference!
-  var nodeKey: String = "breakfast"
-  var foodArr: [Menu] = []{
+  var foodArr: [MenuData] = []{
     didSet{
       tableView.reloadData()
     }
@@ -36,8 +35,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
   }
   
   func setupTableView()  {
-    
-    ref = FIRDatabase.database().reference().child("menu").child("food").child(node.breakfast.rawValue)
+    ref = FIRDatabase.database().reference().child("menu").child("food")
     tableView.delegate = self
     tableView.dataSource = self
     tableView.rowHeight = UITableViewAutomaticDimension
@@ -59,7 +57,6 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let controller = segue.destination as! EditViewController
         controller.item = menuItem
         controller.indexKey = String(indexPath.row)
-        controller.nodeKey = self.nodeKey
         controller.endOfIndex = String(self.foodArr.count)
         
         
@@ -84,7 +81,7 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
   
   override func viewWillAppear(_ animated: Bool) {
     
-    if isLogIn() {
+    if ParseData.isLogIn() {
       tableView.allowsSelection = true
       self.navigationController?.isNavigationBarHidden = false
     }
@@ -129,36 +126,26 @@ class FoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     // check what current seletction on tab control and update
     switch sender.selectedSegmentIndex {
-    case 1: self.foodArr = self.snapData[node.soupAndSalad.rawValue]!
-    self.nodeKey = node.soupAndSalad.rawValue
-    ref = FIRDatabase.database().reference().child("menu").child("food").child(node.soupAndSalad.rawValue)
-      
-    case 2: self.foodArr = self.snapData[node.sandwich.rawValue]!
-    self.nodeKey = node.sandwich.rawValue
-    ref = FIRDatabase.database().reference().child("menu").child("food").child(node.sandwich.rawValue)
-      
-    case 3: self.foodArr = self.snapData[node.desert.rawValue]!
-    self.nodeKey = node.desert.rawValue
-    ref = FIRDatabase.database().reference().child("menu").child("food").child(node.desert.rawValue)
-      
+    case 1: self.foodArr = self.snapData[food.soupAndSalad.rawValue]!
+    case 2: self.foodArr = self.snapData[food.sandwich.rawValue]!
+    case 3: self.foodArr = self.snapData[food.desert.rawValue]!
     default:
-      self.foodArr = self.snapData[node.breakfast.rawValue]!
-      self.nodeKey = node.breakfast.rawValue
-      ref = FIRDatabase.database().reference().child("menu").child("food").child(node.breakfast.rawValue)
+      self.foodArr = self.snapData[food.breakfast.rawValue]!
     }
     
   }
   
   func getMenu(){
     
-    let inRef = FIRDatabase.database().reference().child("menu").child("food")
-    inRef.observe(FIRDataEventType.value, with: { (snapshot) in
+    ref.observe(FIRDataEventType.value, with: { (snapshot) in
       
-      self.snapData.updateValue(unWrapMenu(snapshot:snapshot.childSnapshot(forPath: "breakfast")),forKey: "breakfast")
-      self.snapData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: "soupAndSalad")),forKey: "soupAndSalad")
-      self.snapData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: "sandwich")), forKey: "sandwich")
-      self.snapData.updateValue(unWrapMenu(snapshot: snapshot.childSnapshot(forPath: "desert")), forKey: "desert")
-      self.foodArr = self.snapData["breakfast"]!
+      
+      self.snapData.updateValue(ParseData().parseMenu(itemType: .food, snapshot: snapshot.childSnapshot(forPath: food.breakfast.rawValue)),forKey: food.breakfast.rawValue)
+      
+      self.snapData.updateValue(ParseData().parseMenu(itemType: .food, snapshot: snapshot.childSnapshot(forPath:  food.soupAndSalad.rawValue)),forKey: food.soupAndSalad.rawValue)
+      self.snapData.updateValue(ParseData().parseMenu(itemType: .food, snapshot: snapshot.childSnapshot(forPath: food.sandwich.rawValue)),forKey: food.sandwich.rawValue)
+      self.snapData.updateValue(ParseData().parseMenu(itemType: .food, snapshot: snapshot.childSnapshot(forPath: food.desert.rawValue)),forKey: food.desert.rawValue)
+      self.foodArr = self.snapData[food.breakfast.rawValue]!
       
     })
     { (error) in

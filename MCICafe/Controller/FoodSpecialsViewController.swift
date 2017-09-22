@@ -17,9 +17,9 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
   var ref: FIRDatabaseReference!
   @IBOutlet weak var addbuttonItem: UIBarButtonItem!
   @IBOutlet var tableView: UITableView!
-  let nodeKey = "specials"
   
-  var specialsArr: [Menu] = [] {
+  
+  var specialsArr: [MenuData] = [] {
     didSet {
       tableView.reloadData()
     }
@@ -27,7 +27,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    ref = FIRDatabase.database().reference().child("menu").child(nodeKey)
+    ref = FIRDatabase.database().reference().child("menu").child(food.specials.rawValue)
    
     do {
       try FIRAuth.auth()?.signOut()
@@ -49,7 +49,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
   }
   override func viewWillAppear(_ animated: Bool) {
     // if manager is loged in enable editing options
-    if isLogIn() {
+    if ParseData.isLogIn() {
       tableView.allowsSelection = true
       self.navigationController?.isNavigationBarHidden = false
     }
@@ -96,7 +96,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
   }
   
   func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
-    // reoder the table and also rearregen in firebase
+    // reorder the table and also rearregen in firebase
     let postFrom = ["title": self.specialsArr[fromIndexPath.row].title,
                     "description": self.specialsArr[fromIndexPath.row].description,
                     "cost": self.specialsArr[fromIndexPath.row].cost]
@@ -120,14 +120,16 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
         let controller = segue.destination as! EditViewController
         controller.item = menuItem
         controller.indexKey = String(indexPath.row)
-        controller.nodeKey = self.nodeKey
+        controller.nodeKey = food.specials.rawValue
         controller.endOfIndex = String(self.specialsArr.count)
+        controller.ref = self.ref
         
       }
     }else if  segue.identifier == "addSegue"{
       let controller = segue.destination as! EditViewController
-      controller.nodeKey = self.nodeKey
+      controller.nodeKey = food.specials.rawValue
       controller.segueId = segue.identifier!
+      controller.ref = self.ref
     }
   }
   
@@ -136,7 +138,7 @@ class FoodSpecialsViewController: UIViewController,UITableViewDelegate, UITableV
     
     self.ref.observe(FIRDataEventType.value, with: { (snapshot) in
       
-      self.specialsArr = unWrapMenu(snapshot: snapshot)
+      self.specialsArr = ParseData().parseMenu(itemType: .food, snapshot: snapshot)
     })
     
   }

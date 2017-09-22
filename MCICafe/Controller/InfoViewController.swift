@@ -88,7 +88,7 @@ class InfoViewController: UIViewController {
   @IBAction func goToViewButton(_ sender: UIButton) {
     
     // if manager is already logged in go to notification else login page
-    if isLogIn() {
+    if ParseData.isLogIn() {
       
       let chatView = ViewController()
       let chatNavigationController = UINavigationController(rootViewController: chatView)

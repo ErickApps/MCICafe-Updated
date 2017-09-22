@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		985AFF6F0351536052548775 /* Pods_MCICafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */; };
 		A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7180B4B1E12518F0025279D /* SpecialsCell.swift */; };
+		A728FB3A1F74588B0089587F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A728FB391F74588B0089587F /* Enums.swift */; };
 		A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74262B21E0E3C870009B34A /* ModelMenu.swift */; };
 		A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79352301E0E362B00C36D82 /* AppDelegate.swift */; };
 		A79352331E0E362B00C36D82 /* FoodSpecialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */; };
@@ -27,12 +28,14 @@
 		A7C6C4041E5FA42E00D95E04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7C6C4031E5FA42E00D95E04 /* Assets.xcassets */; };
 		A7CB6FD21E1ECEF9009342C5 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */; };
 		A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */; };
+		A7ED2BA91F6D9917009B3BA2 /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ED2BA81F6D9917009B3BA2 /* MenuData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0773D1188DD75E10B9D7533F /* Pods-MCICafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.release.xcconfig"; sourceTree = "<group>"; };
 		999E6FD64B78CD5E0E181E33 /* Pods_MCICafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCICafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7180B4B1E12518F0025279D /* SpecialsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialsCell.swift; sourceTree = "<group>"; };
+		A728FB391F74588B0089587F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		A74262B21E0E3C870009B34A /* ModelMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMenu.swift; sourceTree = "<group>"; };
 		A793522D1E0E362B00C36D82 /* MCI Café.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MCI Café.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79352301E0E362B00C36D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		A7CB6FD11E1ECEF9009342C5 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		A7DDCA371E260F4300B90839 /* MCICafe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MCICafe.entitlements; sourceTree = "<group>"; };
 		A7DDCA381E27352F00B90839 /* ManagerLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerLogInViewController.swift; sourceTree = "<group>"; };
+		A7ED2BA81F6D9917009B3BA2 /* MenuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
 		E8D41E3DFE009BFA4D2302E5 /* Pods-MCICafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCICafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCICafe/Pods-MCICafe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,8 +93,8 @@
 		A76631161F58FDF100386284 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
 				A79352321E0E362B00C36D82 /* FoodSpecialsViewController.swift */,
+				A79352341E0E362B00C36D82 /* FoodViewController.swift */,
 				A79B72641E21827A008605CF /* DrinksViewController.swift */,
 				A799B9F01E5A6E9000D4ACEF /* NotificationViewController.swift */,
 				A7BEBEA11E27557400FDA9E8 /* EditViewController.swift */,
@@ -105,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				A74262B21E0E3C870009B34A /* ModelMenu.swift */,
+				A7ED2BA81F6D9917009B3BA2 /* MenuData.swift */,
+				A728FB391F74588B0089587F /* Enums.swift */,
 				A79B72681E25CD25008605CF /* Artwork.swift */,
 			);
 			path = Model;
@@ -302,10 +308,12 @@
 				A74262B31E0E3C870009B34A /* ModelMenu.swift in Sources */,
 				A79352351E0E362B00C36D82 /* FoodViewController.swift in Sources */,
 				A7B0E0C11F5904B200341ED3 /* EditViewExtension.swift in Sources */,
+				A728FB3A1F74588B0089587F /* Enums.swift in Sources */,
 				A79352311E0E362B00C36D82 /* AppDelegate.swift in Sources */,
 				A7180B4C1E12518F0025279D /* SpecialsCell.swift in Sources */,
 				A79352331E0E362B00C36D82 /* FoodSpecialsViewController.swift in Sources */,
 				A79B72671E25BC07008605CF /* InfoViewController.swift in Sources */,
+				A7ED2BA91F6D9917009B3BA2 /* MenuData.swift in Sources */,
 				A7BEBEA21E27557400FDA9E8 /* EditViewController.swift in Sources */,
 				A7B0E0BF1F5902D800341ED3 /* NotificationExtension.swift in Sources */,
 				A7DDCA391E27352F00B90839 /* ManagerLogInViewController.swift in Sources */,

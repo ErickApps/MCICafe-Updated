@@ -14,11 +14,14 @@ import Firebase
 
 class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate{
   
-  var item: Menu?
+ // var item: Menu?
+  var item: MenuData?
   var indexKey: String?
   var nodeKey: String?
   var endOfIndex: String?
   var segueId: String?
+  var isDrink = false
+  var ref: FIRDatabaseReference = FIRDatabase.database().reference().child("menu")
   
   
   @IBOutlet weak var segmentModify: UISegmentedControl!
@@ -42,7 +45,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
       segmentModify.isHidden = true
       clearText()
     }
-    if nodeKey == "softDrink" || nodeKey == "coffee" {
+    if isDrink {
       descriptionTextView.isHidden = true
     }
 
@@ -58,8 +61,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
       configureView()
       hideTextField(bool: false)
       
-    }else if sender.selectedSegmentIndex == 1 {
-      
+    } else if sender.selectedSegmentIndex == 1 {
       hideTextField(bool: false)
       configureView()
     }
@@ -111,12 +113,12 @@ class EditViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
   func displayAlert(title: String, message: String,typeOfOperation: String, operation: ((String) -> ())?) {
     
     let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel) {
+    let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
       (result : UIAlertAction) -> Void in
     }
     
     
-    let confirmAction = UIAlertAction(title: "confirm", style: UIAlertActionStyle.default) {
+    let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default) {
       (result : UIAlertAction) -> Void in
       
       if typeOfOperation == "delete" {

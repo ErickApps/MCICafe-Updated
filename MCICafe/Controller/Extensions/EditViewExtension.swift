@@ -19,7 +19,7 @@ extension EditViewController {
   
   func delete() {
     //it moves the selected item to the last possition and the deletes it
-    let ref = getChildLocation(nodeKey: nodeKey!)
+    //let ref = getChildLocation(nodeKey: nodeKey!)
     let startIndex = Int(indexKey!)!
     
     ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -29,15 +29,15 @@ extension EditViewController {
       
       for i in startIndex..<endIndex{
         let dicData = nsArr[i+1] as! NSDictionary
-        ref.child(String(i)).setValue(dicData.dictionaryWithValues(forKeys: ["title","cost","description"]))
+        self.ref.child(String(i)).setValue(dicData.dictionaryWithValues(forKeys: ["title","cost","description"]))
       }
       
       if snapshot.childrenCount-1 == 0 {
-        ref.child("0").setValue( ["title": "","description": "","cost": ""])
+        self.self.ref.child("0").setValue( ["title": "","description": "","cost": ""])
         return
       }
       
-      ref.child(String(snapshot.childrenCount-1)).removeValue()
+      self.ref.child(String(snapshot.childrenCount-1)).removeValue()
       
     })
     
@@ -51,32 +51,35 @@ extension EditViewController {
   
   func operation(operationType: String) {
     
-    let ref = getChildLocation(nodeKey: nodeKey!)
+    //let ref = getChildLocation(nodeKey: nodeKey!)
     var index = operationType
     ref.observeSingleEvent(of: .value, with: { (snapshot) in
       
       
-      switch index{
+      switch index {
       case "add": index = String(snapshot.childrenCount)
       case "edit": index = self.indexKey!
       default : break
       }
       
-      if self.nodeKey ==  node.coffee.rawValue || self.nodeKey ==  node.softDrink.rawValue{
+      if self.isDrink {
         if let title = self.titleTextField.text,
           let cost = self.costTextField.text
         {
           let post = ["title": title,"cost": cost]
-          ref.updateChildValues([index: post])
+          self.ref.updateChildValues([index: post])
           self.clearText()
         }
         
       }else {
-        if let title = self.titleTextField.text, let description = self.descriptionTextView.text, let cost = self.costTextField.text {
+        if let title = self.titleTextField.text,
+          let description = self.descriptionTextView.text,
+          let cost = self.costTextField.text {
+          
           let post = ["title": title,
                       "description": description,
                       "cost": cost]
-          ref.updateChildValues([index: post])
+          self.ref.updateChildValues([index: post])
           self.clearText()
         }
       }

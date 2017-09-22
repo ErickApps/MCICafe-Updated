@@ -35,8 +35,8 @@ class ManagerLogInViewController: UIViewController {
           self.emailTextField.text = nil
           self.passwordTextField.text = nil
         }
-        else if isLogIn(){
-          self.displayAlert(title: "Loged-In", message: ("Login succesfull"), dismiss: true)
+        else if ParseData.isLogIn() {
+          self.displayAlert(title: "Loged-in", message: ("Login succesfull"), dismiss: true)
         }
         
       }
@@ -48,7 +48,7 @@ class ManagerLogInViewController: UIViewController {
     
     let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
     
-    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+    refreshAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
       if dismiss {
         self.dismiss(animated: true, completion: nil)
       }
